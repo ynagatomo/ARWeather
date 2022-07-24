@@ -13,8 +13,7 @@ struct DevConstant {
 
     static let weatherDataExpireSeconds: [Double] = [5, 60] // [sec]
     static let showingARDebugOptions = false
-//    static let movingCamera = false
-    static let perspectiveCameraPosition = SIMD3<Float>(0, 0.1, 0.5)
+    static let perspectiveCameraPosition = SIMD3<Float>(0, 0.1, 0.5) // for Simulator
 
     static let weatherServiceDelaySeconds: UInt64 = 5 // [seconds]
     static let isWeatherServiceDelay = false
@@ -31,6 +30,5 @@ final class DevConfiguration {
     var isThrowingWeatherError = DevConstant.isThrowingWeatherError
 
     var showingARDebugOptions = DevConstant.showingARDebugOptions
-//    var usingMovingCamera = DevConstant.movingCamera
 }
 #endif

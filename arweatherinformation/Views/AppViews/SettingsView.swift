@@ -12,40 +12,28 @@ struct SettingsView: View {
     @AppStorage(AppConstant.displayingARGGuidance) private var displayingARGGuidance = true
     @AppStorage(AppConstant.onboardingDisplayed) var onboardingDisplayed = true
     @AppStorage(AppConstant.soundEnable) var soundEnable = true // Playing Sound?
-//    @AppStorage(AppConstant.autoStopARPlaying) var autoStopARPlaying = true
 
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Button("done", action: dismiss.callAsFunction)
-//                Button(action: dismiss.callAsFunction) {
-//                    Image(systemName: "x.circle")
-//                        .font(.system(size: 36))
-//                }
+                Button("settings_btn_done", action: dismiss.callAsFunction)
             } // HStack
-            Text("settings").font(.title)
+            Text("settings_title", comment: "Settings: Title").font(.title)
 
             List {
-                Section(header: Text("display", comment: "Settings: section - display")) {
-                    Toggle("display ar guidance", isOn: $displayingARGGuidance)
-                    Toggle("display introduction", isOn: $onboardingDisplayed)
+                Section(header: Text("section_display", comment: "Settings: section - display")) {
+                    Toggle("toggle_display_ar_guidance", isOn: $displayingARGGuidance)
+                    Toggle("toggle_display_introduction", isOn: $onboardingDisplayed)
                 }
 
-                Section(header: Text("sound", comment: "Settings: section - sound")) {
-                    Toggle("enable sound", isOn: $soundEnable)
+                Section(header: Text("section_sound", comment: "Settings: section - sound")) {
+                    Toggle("toggle_enable_sound", isOn: $soundEnable)
                         .onChange(of: soundEnable) { value in
                             SoundManager.share.enable = value
                         }
                 }
-
-//                Section(header: Text("")) {
-//                    Toggle("finish ar playing automatically to save battery and to reduce the heat",
-//                           isOn: $autoStopARPlaying)
-//                }
             }
-
-//            Spacer()
         } // VStack
         .fontWeight(.thin)
         .padding(40)

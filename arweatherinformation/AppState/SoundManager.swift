@@ -15,6 +15,7 @@ final class SoundManager {
     enum SoundKind: Int {
         case hourflip = 0
         case scaleup
+        case hourflipend
     }
 
     private var players: [AVAudioPlayer?] = []
@@ -35,6 +36,13 @@ final class SoundManager {
                                         withExtension: "mp3")!)
         player1?.prepareToPlay() // load the sound data into a buffer
         players.append(player1)
+
+        // 2) Hourly Weather Flipping End Sound
+        let player2 = try? AVAudioPlayer(
+            contentsOf: Bundle.main.url(forResource: "hourflipReset",
+                                        withExtension: "m4a")!)
+        player2?.prepareToPlay()
+        players.append(player2)
     }
 
     func setup(_ enable: Bool) {

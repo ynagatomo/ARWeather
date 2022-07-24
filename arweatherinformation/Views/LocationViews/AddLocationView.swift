@@ -98,9 +98,6 @@ struct AddLocationView: View {
                     note: locationNote,
                     color: UIColor(locationBGColor),
                     symbol: locationSymbol)
-//                geolocation: isCurrentLocation ? nil : Geolocation(latitude: locationLatitude,
-//                                                        longitude: locationLongitude,
-//                                                        altitude: 0))
                 appStateController.replaceLocation(ofID: originalLocation.id,
                                                    with: editedLocation)
             } else {
@@ -113,34 +110,34 @@ struct AddLocationView: View {
     var body: some View {
         VStack {
             HStack {
-                Button("cancel", action: dismiss.callAsFunction).tint(.red)
+                Button("addview_btn_cancel", action: dismiss.callAsFunction).tint(.red)
                 Spacer()
-                Button("save", action: {
+                Button("addview_btn_save", action: {
                     saveLocation()
                     dismiss.callAsFunction()
                 }).buttonStyle(.borderedProminent)
             }
             Spacer()
             List {
-                Section(header: Text("name")) {
-                    TextField("name", text: $locationName)
-                    TextField("note", text: $locationNote)
+                Section(header: Text("section_name", comment: "AddView: section")) {
+                    TextField("addview_name", text: $locationName)
+                    TextField("addview_note", text: $locationNote)
                 } // Section
                 if isNew {
-                    Section(header: Text("location")) {
-                        NumberField(title: "latitude",
+                    Section(header: Text("section_location", comment: "AddView: section")) {
+                        NumberField(title: "addview_latitude",
                                     value: $locationLatitude)
                         .onSubmit {
                             validateLatitude()
                         }
-                        NumberField(title: "longitude",
+                        NumberField(title: "addview_longitude",
                                     value: $locationLongitude)
                         .onSubmit {
                             validateLongitude()
                         }
                         HStack {
                             Spacer()
-                            Button("current location", action: {
+                            Button("addview_btn_current_location", action: {
                                 if let deviceLocation = appStateController.currentDeviceLocation() {
                                     locationLatitude = deviceLocation.latitude
                                     locationLongitude = deviceLocation.longitude
@@ -149,19 +146,18 @@ struct AddLocationView: View {
                         }
                     } // Section
                 }
-                Section(header: Text("background")) {
-                    ColorPicker("background color", selection: $locationBGColor)
+                Section(header: Text("section_background", comment: "AddView: section")) {
+                    ColorPicker("addview_background_color", selection: $locationBGColor)
                     Picker(selection: $locationSymbol, content: {
                         ForEach(0 ..< AppConstant.locationSymbols.count, id: \.self) {
                             Image(systemName: AppConstant.locationSymbols[$0])
                         }
-                    }, label: { Text("location symbol") })
+                    }, label: { Text("addview_location_symbol", comment: "AddView: picker") })
                 } // Section
-                Section(header: Text("place")) {
+                Section(header: Text("section_place", comment: "AddView: section")) {
                     HStack {
-//                        Toggle("favorite", isOn: $locationFavorite)
                         Toggle(isOn: $locationFavorite) {
-                            Label("favorite", systemImage: locationFavorite ? "heart.fill" : "heart")
+                            Label("addview_toggle_favorite", systemImage: locationFavorite ? "heart.fill" : "heart")
                         }
                         .toggleStyle(.button)
                     }

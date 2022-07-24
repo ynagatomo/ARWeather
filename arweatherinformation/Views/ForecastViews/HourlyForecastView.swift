@@ -10,29 +10,7 @@ import WeatherKit
 
 struct HourlyForecastView: View {
     let forecast: [HourWeather]
-//    let hourlyForecast: Forecast<HourWeather>
     let themeColor: Color
-
-//    var forecast: [HourWeather] {
-//        let recentForecast = hourlyForecast.filter {
-//            let interval = $0.date.timeIntervalSinceNow
-//            return (interval >= 0) && (interval < 24 * 60 * 60) // [seconds] range
-//        }
-//        var intervalForecast: [HourWeather] = []
-//        for index in 0 ..< recentForecast.count where index % AppConstant.hourlyForecastIntervalHours == 0 {
-//            // [hours] interval
-//                intervalForecast.append(recentForecast[index])
-//        }
-//        return intervalForecast
-//    }
-
-//    let measureFormatter: MeasurementFormatter = {
-//        let numFormatter = NumberFormatter()
-//        numFormatter.maximumFractionDigits = 1
-//        let measureFormatter = MeasurementFormatter()
-//        measureFormatter.numberFormatter = numFormatter
-//        return measureFormatter
-//    }()
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -45,13 +23,6 @@ struct HourlyForecastView: View {
         } // ScrollView
     } // body
 }
-
-//    struct HourlyForecastView_Previews: PreviewProvider {
-//        static let forecast = Forecast<HourWeather>()
-//        static var previews: some View {
-//            HourlyForecastView(hourlyForecast: forecast)
-//        }
-//    }
 
 struct HourlyForecastColumnView: View {
     let forecast: HourWeather
@@ -80,35 +51,20 @@ struct HourlyForecastColumnView: View {
             .padding(20)
             .offset(x: 0, y: 30)
 
-//            // symbolName
-//            RoundedRectangle(cornerRadius: 20)
-//                .frame(width: 80, height: 60)
-//                .foregroundColor(forecastColor(forecast.precipitationChance))
-//                .overlay {
-//                    Image(systemName: forecast.symbolName) // symbols don't have color
-//                        .font(.system(size: 40))
-//                }
-//                .offset(x: 0, y: 30)
-
             VStack(alignment: .leading) {
                 Group {
                     HStack {
                         Spacer()
                         // <Temperature>
-                        Text(String(format: "%3.0f", forecast.temperature.value))
+                        Text(String(format: "%3.0f", forecast.temperature.value) + "°")
                             .font(.title)
                             .accessibilityLabel(forecast.temperature.description)
-//                            .foregroundColor(.gray)
                         Spacer()
                     } // HStack
                     .padding(.top, 8)
 
                     HStack {
                         Spacer()
-//                        // <PrecipitationAmount>
-//                        Text(forecast.precipitationAmount.description)
-//                            .font(.title2)
-//                            .foregroundColor(.blue)
                         // <Precipitation> [%]
                         Text(forecast.precipitationChance.formatted(.percent)) // %
                             .font(.title2)
@@ -117,28 +73,13 @@ struct HourlyForecastColumnView: View {
                     } // HStack
                 } // Group
 
-//                Group {
-//                    // <time>
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .frame(height: 40)
-//                        .foregroundColor(
-//                            forecast.isDaylight
-//                            ? Color("DaylightBGColor")
-//                            : Color("NightBGColor"))
-//                        .overlay {
-//                            Text(forecast.date.formatted(date: .omitted,
-//                                                         time: .shortened))
-//                            .foregroundColor(.white)
-//                        }
-                    // <date>
-                    Text(forecast.date.formatted(date: .abbreviated, time: .omitted))
-                    .padding(8)
-//                } // Group
+                // <date>
+                Text(forecast.date.formatted(date: .abbreviated, time: .omitted))
+                .padding(8)
 
                 // <condition>
                 Text(forecast.condition.description)
                     .fontWeight(.thin)
-//                    .bold()
                     .padding(.vertical, 4)
 
                 Group {
@@ -171,12 +112,6 @@ struct HourlyForecastColumnView: View {
                         Text(forecast.precipitationAmount.description)
                             .foregroundColor(Color("RainTextColor"))
                     }
-//                    // <precipitationChance 0 to 1>
-//                    HStack {
-//                        Image(systemName: "cloud.rain")
-//                        Text(forecast.precipitationChance.formatted(.percent)) // %
-//                        //               .foregroundColor(.blue)
-//                    }
                     // <wind>
                     HStack {
                         Image(systemName: "wind")

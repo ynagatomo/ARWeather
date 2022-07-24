@@ -45,7 +45,6 @@ struct DevView: View {
                 Section(content: {
                     Text(String("App started count: \(startedCount)"))
                     Text(String("Weather API call count: \(weatherAPICallCount)"))
-//                    Toggle("onboardingDisplayed", isOn: $onboardingDisplayed)
                 }, header: { Text("UserDefaults") })
 
                 // App State

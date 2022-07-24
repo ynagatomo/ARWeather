@@ -29,6 +29,7 @@ struct ForecastView: View {
         return location
     }
 
+    // These stings are not translated. English only
     private var stateMessage: String {
         var message = ""
         if let location {
@@ -70,109 +71,86 @@ struct ForecastView: View {
                     .opacity(0.3)
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
-//                            HStack {
-//                                Button(action: { showingAR = true }, label: {
-//                                    Image(systemName: "arkit")
-//                                        .font(.system(size: 30))
-//                                })
-//                                .buttonStyle(.borderedProminent)
-//                                .tint(Color("HomeBGColor"))
-//                                .accessibilityLabel("augmented reality display")
-//                                // .accessibilityHidden(true)
-//                                .disabled(!forecastAvailable)
-//                                .padding(.leading, 30)
-
                             Color.clear.frame(width: 10, height: 90) // keeps the top space
                             Text("\(location.name)")
                                 .font(.title)
                                 .fontWeight(.thin)
                                 .lineLimit(1)
-//                                    .bold()
-//                                    .foregroundColor(.gray)
-
-//                                Spacer()
-//                            } // HStack
-//                            .padding(.top, 88)
-
                             Divider()
-//                            ScrollView(.vertical, showsIndicators: false) {
-                                if case let .weather(forecast, timestamp: timestamp, location: _)
-                                    = location.weather {
-                                    HStack {
-                                        Spacer()
-                                        Image(systemName: "clock")
-                                            .accessibilityHidden(true)
-                                        Text("hourly forecast")
-                                            .fontWeight(.thin)
-                                        //                                        .bold()
-                                            .foregroundColor(.secondary)
-                                            .padding(.horizontal, 6)
-                                        Spacer()
-                                    } // HStack
-                                    .padding(.top)
-
-                                    HourlyForecastView(forecast: hourWeathers(),
-                                                       themeColor: Color(location.color))
-
-                                    HStack {
-                                        Spacer()
-                                        Image(systemName: "calendar")
-                                            .accessibilityHidden(true)
-                                        Text("daily forecast")
-                                            .fontWeight(.thin)
-                                            .bold()
-                                            .foregroundColor(.secondary)
-                                            .padding(.horizontal, 6)
-                                        Spacer()
-                                    }
-                                    .padding()
-                                    DailyForecastView(dailyForecast: forecast.dailyForecast,
-                                                      themeColor: Color(location.color))
-
-                                    Text("updated at \(timestamp.description)")
-                                        .font(.caption)
+                            if case let .weather(forecast, timestamp: timestamp, location: _)
+                                = location.weather {
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "clock")
+                                        .accessibilityHidden(true)
+                                    Text("forecastView_hourly_forecast", comment: "ForecastView: label")
                                         .fontWeight(.thin)
                                         .foregroundColor(.secondary)
-                                        .padding()
+                                        .padding(.horizontal, 6)
+                                    Spacer()
+                                } // HStack
+                                .padding(.top)
 
-                                    if let markURL {
-                                        AsyncImage(url: markURL) { image in
-                                            image
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(height: 30)
-                                        } placeholder: {
-                                            Color.clear
-                                        }
-                                    }
-                                    if let legalPageURL = appStateController.attributionLegalPage {
-                                        Link("weather data sources", destination: legalPageURL)
-                                            .font(.caption)
-                                    }
-                                } else {
-                                    Text(stateMessage)
+                                HourlyForecastView(forecast: hourWeathers(),
+                                                   themeColor: Color(location.color))
+
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "calendar")
+                                        .accessibilityHidden(true)
+                                    Text("forecastView_daily_forecast", comment: "ForecastView: label")
                                         .fontWeight(.thin)
-                                        .padding()
+                                        .bold()
+                                        .foregroundColor(.secondary)
+                                        .padding(.horizontal, 6)
+                                    Spacer()
+                                }
+                                .padding()
+                                DailyForecastView(dailyForecast: forecast.dailyForecast,
+                                                  themeColor: Color(location.color))
 
-                                    if location.weather == .updating {
-                                        Button("cancel", action: {
-                                            debugLog("DEBUG: cancel")
-                                            if let task = location.task {
-                                                task.cancel()
-                                                // appStateController.setTask(nil, toID: location.id)
-                                            } else {
-                                                assertionFailure("invalid: no task to be canceled")
-                                                // do nothing in release mode
-                                            }
-                                        })
+                                Text(String("updated at \(timestamp.description)")) // English only
+                                    .font(.caption)
+                                    .fontWeight(.thin)
+                                    .foregroundColor(.secondary)
+                                    .padding()
+
+                                if let markURL {
+                                    AsyncImage(url: markURL) { image in
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(height: 30)
+                                    } placeholder: {
+                                        Color.clear
                                     }
-                                } // if case let
-                                Color.clear.frame(width: 10, height: 50) // keeps the bottom space
-                                Spacer()
-//                            } // ScrollView
+                                }
+                                if let legalPageURL = appStateController.attributionLegalPage {
+                                    Link(String("weather data sources"), // English only
+                                         destination: legalPageURL)
+                                        .font(.caption)
+                                }
+                            } else {
+                                Text(stateMessage)
+                                    .fontWeight(.thin)
+                                    .padding()
+
+                                if location.weather == .updating {
+                                    Button("btn_cancel_the_forecast_data_request", action: {
+                                        if let task = location.task {
+                                            task.cancel()
+                                            // appStateController.setTask(nil, toID: location.id)
+                                        } else {
+                                            assertionFailure("invalid: no task to be canceled")
+                                            // do nothing in release mode
+                                        }
+                                    })
+                                }
+                            } // if case let
+                            Color.clear.frame(width: 10, height: 50) // keeps the bottom space
+                            Spacer()
                         } // VStack
                     } // ScrollView
-//                    .padding(.vertical, 90) // to keep the top space
                 } // ZStack
                 .toolbar {
                     ToolbarItemGroup(placement: .primaryAction) {
@@ -191,7 +169,7 @@ struct ForecastView: View {
                 }
             } else {
                 VStack {
-                    Text("select a location")
+                    Text("forecastView_select_a_location", comment: "ForecastView: text")
                     #if DEBUG
                     Button("test AR", action: { showingAR = true })
                         .padding()
@@ -199,7 +177,6 @@ struct ForecastView: View {
                 }
             } // if-else
         } // VStack
-//        .ignoresSafeArea()
         .sheet(isPresented: $showingEdit) {
             // because when showing edit view, the location ID should not be nil
             // use force-unwrapping, `locationID!`
@@ -208,7 +185,7 @@ struct ForecastView: View {
         }
         .fullScreenCover(isPresented: $showingAR) {
             ARWeatherView(name: location?.name ?? "",
-                          modelIndex: location?.model ?? 0,
+                          modelIndex: location?.model ?? 2, // #2: town
                           hourlyForecast: hourlyForecast())
         }
     } // body
@@ -226,18 +203,6 @@ struct ForecastView: View {
             forecasts = SampleForecast.sampleHourlyForecasts
             #endif
         }
-
-//        if let location,
-//           case .weather(let weather, timestamp: _, location: _) = location.weather {
-//            forecasts = weather.hourlyForecast.map { hourWeather in
-//                HourForecast.make(from: hourWeather)
-//            }
-//        } else {
-//            // do nothing in release mode
-//            #if DEBUG
-//            forecasts = SampleForecast.sampleHourlyForecasts
-//            #endif
-//        }
         return forecasts
     }
 

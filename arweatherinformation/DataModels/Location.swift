@@ -54,25 +54,6 @@ struct Location: Codable, Identifiable {
     let weather: WeatherState
     let task: Task<Void, Never>?
 
-//    enum WeatherState: Equatable {
-//        case none
-//        case updating
-//        case error(WeatherError)
-//        case weather(Weather, timestamp: Date, location: Geolocation)
-//
-//        var description: String {
-//            var string = ""
-//            switch self {
-//            case .none: string = "none"
-//            case .updating: string = "updating"
-//            case .weather(let weather, timestamp: _, location: _): string
-//                = "daily weather count = \(weather.dailyForecast.count)"
-//            case .error(let error): string = error.localizedDescription
-//            }
-//            return string
-//        }
-//    }
-
     var location: CLLocation? {
         var location: CLLocation?
         if let geolocation {
@@ -86,8 +67,6 @@ struct Location: Codable, Identifiable {
         // do not add weather because it is not coded
     }
 
-//    init(id: UUID = UUID(), name: String = "", color: UIColor = .gray, symbol: Int = 0, isHere: Bool = false,
-//         geolocation: Geolocation? = nil, weather: WeatherState = .none) {
     init(id: UUID, favorite: Bool, name: String, note: String, color: UIColor, symbol: Int,
          model: Int, isHere: Bool, geolocation: Geolocation?, weather: WeatherState, task: Task<Void, Never>?) {
         self.id = id
@@ -251,15 +230,4 @@ extension Location {
                         task: self.task
         )
     }
-
-//    func updated(favorite: Bool, name: String, color: UIColor, symbol: Int, geolocation: Geolocation?) -> Self {
-//        return Location(id: self.id,
-//                        favorite: favorite,
-//                        name: name,
-//                        color: color,
-//                        symbol: symbol,
-//                        isHere: self.isHere,
-//                        geolocation: geolocation,
-//                        weather: self.weather)
-//    }
 }

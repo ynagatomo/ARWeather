@@ -24,20 +24,10 @@ struct DailyForecastView: View {
     } // body
 }
 
-//    struct DailyForecastView_Previews: PreviewProvider {
-//        static var previews: some View {
-//            DailyForecastView()
-//        }
-//    }
-
 struct DailyForecastColumnView: View {
     let forecast: DayWeather
     let themeColor: Color
 
-//    private func gray(_ chance: Double) -> Color {
-//        let bright = 1.0 - chance
-//        return Color(uiColor: UIColor(red: bright, green: bright, blue: bright, alpha: 1))
-//    }
     private func forecastColor(_ chance: Double) -> Color {
         if chance == 0 { return Color("SunnyBGColor") }
         let bright = 1.0 - chance
@@ -60,28 +50,18 @@ struct DailyForecastColumnView: View {
             .frame(height: 60)
             .padding(20)
             .offset(x: 0, y: 30)
-//            // <symbol>
-//            RoundedRectangle(cornerRadius: 20)
-//                .frame(width: 80, height: 60)
-//                .foregroundColor(forecastColor(forecast.precipitationChance))
-//                .overlay {
-//                    Image(systemName: forecast.symbolName) // symbols don't have color
-//                        .font(.system(size: 40))
-//                }
-//                .offset(x: 0, y: 30)
 
             VStack(alignment: .leading) {
                 Group {
                     // <temperature high-low>
                     HStack {
                         Spacer()
-                        Text(String(format: "%3.0f", forecast.highTemperature.value))
+                        Text(String(format: "%3.0f", forecast.highTemperature.value) + "°")
                         Text(" - ")
-                        Text(String(format: "%3.0f", forecast.lowTemperature.value))
+                        Text(String(format: "%3.0f", forecast.lowTemperature.value) + "°")
                         Spacer()
                     } // HStack
                     .font(.title)
-//                    .foregroundColor(.gray)
                     .padding(.top, 8)
 
                     HStack {
@@ -97,12 +77,10 @@ struct DailyForecastColumnView: View {
                 Text(forecast.date.formatted(date: .complete, // .abbreviated,
                                              time: .omitted))
                 .padding(8)
-//                .background(themeColor.cornerRadius(10))
 
                 // <condition>
                 Text(forecast.condition.description)
                     .fontWeight(.thin)
-//                    .bold()
                     .padding(.vertical, 4)
 
                 Group {

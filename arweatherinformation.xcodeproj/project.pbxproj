@@ -30,15 +30,19 @@
 		BA6D1055286ABBF8003E5AB0 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D1054286ABBF8003E5AB0 /* AboutView.swift */; };
 		BA6D1057286ABE28003E5AB0 /* DevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D1056286ABE28003E5AB0 /* DevView.swift */; };
 		BA719B1C287572F80085C637 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA719B1B287572F80085C637 /* OnboardingView.swift */; };
+		BA882486288CD67B00380797 /* DeviceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA882485288CD67B00380797 /* DeviceLocation.swift */; };
+		BA882488288CFDB400380797 /* hourflipReset.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA882487288CFDB400380797 /* hourflipReset.m4a */; };
+		BA91AFC9288D5F87000F965F /* town.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA91AFC8288D5F87000F965F /* town.usdz */; };
 		BA938B9A287674BA00F26FAE /* HourlyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B99287674BA00F26FAE /* HourlyForecastView.swift */; };
 		BA938B9C287676DD00F26FAE /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B9B287676DD00F26FAE /* DailyForecastView.swift */; };
 		BA938B9E287677B900F26FAE /* HourlySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B9D287677B900F26FAE /* HourlySample.swift */; };
 		BA9CCF3D287E6EA400B92F63 /* hourflip.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA9CCF3C287E6EA400B92F63 /* hourflip.m4a */; };
 		BA9CCF3F287E747100B92F63 /* scaleup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA9CCF3E287E747100B92F63 /* scaleup.mp3 */; };
 		BAA654B9288A3A79006F02B7 /* Double-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA654B8288A3A79006F02B7 /* Double-extensions.swift */; };
+		BAC21A56288D3F5000471EBD /* village.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAC21A55288D3F5000471EBD /* village.usdz */; };
+		BAC21A5A288D51A600471EBD /* field.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAC21A59288D51A600471EBD /* field.usdz */; };
 		BAC4997B287294A3008F80DE /* AddLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4997A287294A3008F80DE /* AddLocationView.swift */; };
-		BAC7B76F288BC9640028DB85 /* base.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAC7B76E288BC9640028DB85 /* base.usdz */; };
-		BAC7B771288BC96D0028DB85 /* field.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAC7B770288BC96D0028DB85 /* field.usdz */; };
+		BAD16F09288D07C300CD964F /* base.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAD16F08288D07C300CD964F /* base.usdz */; };
 		BAF82745287CF7EA0067A813 /* ARWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF82744287CF7EA0067A813 /* ARWeatherView.swift */; };
 		BAF82747287CF9C50067A813 /* ARContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF82746287CF9C50067A813 /* ARContainerView.swift */; };
 		BAF82749287CFA4B0067A813 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF82748287CFA4B0067A813 /* ARViewController.swift */; };
@@ -86,15 +90,19 @@
 		BA6D1054286ABBF8003E5AB0 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		BA6D1056286ABE28003E5AB0 /* DevView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevView.swift; sourceTree = "<group>"; };
 		BA719B1B287572F80085C637 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BA882485288CD67B00380797 /* DeviceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLocation.swift; sourceTree = "<group>"; };
+		BA882487288CFDB400380797 /* hourflipReset.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hourflipReset.m4a; sourceTree = "<group>"; };
+		BA91AFC8288D5F87000F965F /* town.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = town.usdz; sourceTree = "<group>"; };
 		BA938B99287674BA00F26FAE /* HourlyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastView.swift; sourceTree = "<group>"; };
 		BA938B9B287676DD00F26FAE /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
 		BA938B9D287677B900F26FAE /* HourlySample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlySample.swift; sourceTree = "<group>"; };
 		BA9CCF3C287E6EA400B92F63 /* hourflip.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hourflip.m4a; sourceTree = "<group>"; };
 		BA9CCF3E287E747100B92F63 /* scaleup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scaleup.mp3; sourceTree = "<group>"; };
 		BAA654B8288A3A79006F02B7 /* Double-extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double-extensions.swift"; sourceTree = "<group>"; };
+		BAC21A55288D3F5000471EBD /* village.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = village.usdz; sourceTree = "<group>"; };
+		BAC21A59288D51A600471EBD /* field.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = field.usdz; sourceTree = "<group>"; };
 		BAC4997A287294A3008F80DE /* AddLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationView.swift; sourceTree = "<group>"; };
-		BAC7B76E288BC9640028DB85 /* base.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = base.usdz; sourceTree = "<group>"; };
-		BAC7B770288BC96D0028DB85 /* field.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = field.usdz; sourceTree = "<group>"; };
+		BAD16F08288D07C300CD964F /* base.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = base.usdz; sourceTree = "<group>"; };
 		BAF82744287CF7EA0067A813 /* ARWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWeatherView.swift; sourceTree = "<group>"; };
 		BAF82746287CF9C50067A813 /* ARContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContainerView.swift; sourceTree = "<group>"; };
 		BAF82748287CFA4B0067A813 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				BA6D103B2869B9FB003E5AB0 /* AppStateController.swift */,
+				BA882485288CD67B00380797 /* DeviceLocation.swift */,
 				BA1381FD286FDF3B004DE7C7 /* LocationManager.swift */,
 				BA6D103D2869BA63003E5AB0 /* AssetManager.swift */,
 				BA6D103F2869BA81003E5AB0 /* SoundManager.swift */,
@@ -219,8 +228,10 @@
 		BA6D10342869B7CA003E5AB0 /* ModelAssets */ = {
 			isa = PBXGroup;
 			children = (
-				BAC7B76E288BC9640028DB85 /* base.usdz */,
-				BAC7B770288BC96D0028DB85 /* field.usdz */,
+				BAD16F08288D07C300CD964F /* base.usdz */,
+				BAC21A55288D3F5000471EBD /* village.usdz */,
+				BAC21A59288D51A600471EBD /* field.usdz */,
+				BA91AFC8288D5F87000F965F /* town.usdz */,
 				BA4C52E62889618B0022EE57 /* cloud.usdz */,
 			);
 			path = ModelAssets;
@@ -258,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				BA9CCF3C287E6EA400B92F63 /* hourflip.m4a */,
+				BA882487288CFDB400380797 /* hourflipReset.m4a */,
 				BA9CCF3E287E747100B92F63 /* scaleup.mp3 */,
 			);
 			path = SoundAssets;
@@ -389,13 +401,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAD16F09288D07C300CD964F /* base.usdz in Resources */,
 				BA6D10222869804D003E5AB0 /* Colors.xcassets in Resources */,
+				BAC21A5A288D51A600471EBD /* field.usdz in Resources */,
 				BA9CCF3F287E747100B92F63 /* scaleup.mp3 in Resources */,
-				BAC7B771288BC96D0028DB85 /* field.usdz in Resources */,
+				BA882488288CFDB400380797 /* hourflipReset.m4a in Resources */,
 				BA9CCF3D287E6EA400B92F63 /* hourflip.m4a in Resources */,
+				BAC21A56288D3F5000471EBD /* village.usdz in Resources */,
 				BA4C52E72889618B0022EE57 /* cloud.usdz in Resources */,
+				BA91AFC9288D5F87000F965F /* town.usdz in Resources */,
 				BA0E60B12856D6BE009D6CAF /* Preview Assets.xcassets in Resources */,
-				BAC7B76F288BC9640028DB85 /* base.usdz in Resources */,
 				BA0E60AE2856D6BE009D6CAF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +466,7 @@
 				BA6D10452869BB47003E5AB0 /* Log.swift in Sources */,
 				BA6D1055286ABBF8003E5AB0 /* AboutView.swift in Sources */,
 				BA6D103A2869B93D003E5AB0 /* DevConfiguration.swift in Sources */,
+				BA882486288CD67B00380797 /* DeviceLocation.swift in Sources */,
 				BA6D10382869B8B6003E5AB0 /* AppConstant.swift in Sources */,
 				BAF82745287CF7EA0067A813 /* ARWeatherView.swift in Sources */,
 				BA938B9C287676DD00F26FAE /* DailyForecastView.swift in Sources */,

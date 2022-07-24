@@ -5,59 +5,9 @@
 //  Created by Yasuhito Nagatomo on 2022/06/27.
 //
 
-// swiftlint:disable file_length
 import CoreLocation
 import WeatherKit
 import SwiftUI
-
-struct DeviceLocation {
-    // Geographical coordinate information
-
-    // Positive values indicate latitudes north of the equator.
-    // Negative values indicate latitudes south of the equator.
-    let latitude: Double // [degrees]
-    // Measurements are relative to the zero meridian,
-    // with positive values extending east of the meridian
-    // and negative values extending west of the meridian.
-    let longitude: Double // [degrees]
-
-    // The altitude above mean sea level associated with a location
-    // When verticalAccuracy contains 0 or a negative number,
-    // the value of altitude is invalid.
-    // The value of altitude is valid when verticalAccuracy contains
-    // a postive number.
-    let altitude: Double // [meters]
-
-    // The radius of uncertainty for the location.
-    // The location’s latitude and longitude identify the center of the circle,
-    // and this value indicates the radius of that circle.
-    // A negative value indicates that the latitude and longitude are invalid.
-    let horizontalAccuracy: Double // [meters]
-
-    // The validity of the altitude values, and their estimated uncertainty.
-    // A positive verticalAccuracy value represents the estimated uncertainty
-    // associated with altitude and ellipsoidalAltitude.
-    // This value is available whenever altitude values are available.
-    // If verticalAccuracy is 0 or a negative number, altitude and
-    // ellipsoidalAltitude values are invalid.
-    // If verticalAccuracy is a positive number, altitude and ellipsoidalAltitude
-    // values are valid.
-    // A positive verticalAccuracy value represents an uncertainty that’s
-    // approximately 68 percent, or one standard deviation, above and below the
-    // altitude values.
-    let verticalAccuracy: Double // [meters]
-
-    // The time at which this location was determined.
-    let timestamp: Date
-
-    var cllocation: CLLocation {
-        CLLocation(latitude: latitude, longitude: longitude)
-    }
-
-//    static let zero = Self(latitude: 0, longitude: 0, altitude: 0, floor: nil,
-//                           horizontalAccuracy: 10, verticalAccuracy: 10,
-//                           timestamp: Date())
-}
 
 @MainActor
 final class AppStateController: ObservableObject {
@@ -71,29 +21,19 @@ final class AppStateController: ObservableObject {
 
     // Location
     enum LocationUpdatingState: Int { case idle = 0, updating }
-//   private let locationManager: CLLocationManager
-//    let locationServiceSupported: Bool
-//    @Published var locationServicesAuthorized = false
     private var locationUpdatingState = LocationUpdatingState.idle
-//    private var deviceLocation: DeviceLocation?
     private let locationManager: LocationManager
 
     // Weather Services
     let weatherService: WeatherService
 
     init() {
-//        locationManager = CLLocationManager()
-//        // Check if the device supports the Significant-Change Location Service
-//        locationServiceSupported = CLLocationManager.significantLocationChangeMonitoringAvailable()
-
         locationManager = LocationManager()
 
         // We can use for creating different WeatherService class instances for optimization.
         // But the shared one is used throughout the app because some specific optimizations
         // are not needed so far.
         weatherService = WeatherService.shared
-//        super.init()
-//        locationManager.delegate = self
     }
 
     func addLocation(_ location: Location) {
@@ -211,12 +151,6 @@ extension AppStateController {
     }
 }
 
-// extension AppStateController {
-//    func clearDeviceLocation() {
-//        deviceLocation = nil
-//    }
-// }
-
 #if DEBUG
 extension AppStateController {
     func doSomething() {
@@ -258,14 +192,6 @@ extension AppStateController {
     func currentDeviceLocation() -> DeviceLocation? {
         return locationManager.currentLocation
     }
-
-//    func deviceLocation() async -> DeviceLocation? {
-//        guard locationUpdatingState == .idle else { return nil }
-//        locationUpdatingState = .updating
-//        let currentLocation = await locationManager.currentLocation()
-//        locationUpdatingState = .idle
-//        return currentLocation
-//    }
 }
 
 // MARK: - WeatherKit
@@ -297,7 +223,6 @@ extension AppStateController {
         var cllocation: CLLocation
         if location.isHere { // Current location
             if let deviceLocation = currentDeviceLocation() {
-//            if let deviceLocation = await locationManager.currentLocation() {
                 cllocation = deviceLocation.cllocation
             } else {
                 // clear the weather data because the current location was not gotten
@@ -408,274 +333,3 @@ extension AppStateController {
         }
     }
 }
-
-//    // MARK: - LocationManager
-//
-//    extension AppStateController {
-//        // Request the location service authorization for When In Use
-//        //
-//        // [Note] You must call this method or requestAlwaysAuthorization()
-//        //     before you can receive location-related information.
-//        //     You may call requestWhenInUseAuthorization() whenever the current
-//        //     authorization status is not determined (CLAuthorizationStatus.notDetermined).
-//        // [Note] This method runs asynchronously and prompts the user to grant permission
-//        //     to the app to use location services. The user prompt contains the text from
-//        //     the NSLocationWhenInUseUsageDescription key in your app Info.plist file,
-//        //     and the presence of that key is required when calling this method.
-//        func requestAuthorization() {
-//            debugLog("requestAuthorization for When In Use was called.")
-//            if locationServiceSupported {
-//                locationManager.requestWhenInUseAuthorization()
-//            }
-//        }
-//
-//        // Start the location services
-//        func startUpdatingLocation() {
-//            debugLog("startUpdatingLocation() was called.")
-//            // assert(updatingLocationState == .stop)
-//            guard updatingLocationState == .stop else { return }
-//            clearDeviceLocation()
-//
-//            // If the Significant-change location services is not supported, do nothing.
-//            guard locationServiceSupported else { return }
-//
-//            // The Significant-change Location Service ignores the accuracy and distance filter.
-//
-//            // [Note] For iOS, the default value of this property is kCLLocationAccuracyBest.
-//            // assert(locationManager.desiredAccuracy == kCLLocationAccuracyBest)
-//
-//            // [Note] The default value (Double [m]) of this property is
-//            //        kCLDistanceFilterNone.
-//            //
-//            // assert(locationManager.distanceFilter == kCLDistanceFilterNone)
-//            //    locationManager.distanceFilter = AppSettings.share.distanceFilter // [m]
-//
-//            // [Note] On supported platforms the default value of this property is true
-//            // assert(locationManager.pausesLocationUpdatesAutomatically == true)
-//
-//            // [Note]
-//            //    The default value of this property is CLActivityType.other.
-//            //    fitness: The location manager is being used to track fitness activities
-//            //    such as walking, running, cycling, and so on.
-//            //    when the value of activityType is CLActivityType.fitness,
-//            //    indoor positioning is disabled.
-//            // locationManager.activityType = .fitness
-//
-//            // [Note]
-//            //    With this service, the location manager ignores the values in its
-//            //    distanceFilter and desiredAccuracy properties, so you don't need
-//            //    to configure them.
-//            updatingLocationState = .updating
-//            locationManager.startMonitoringSignificantLocationChanges()
-//        }
-//
-//        // Stop the location services
-//        func stopUpdatingLocation() {
-//            debugLog("stopUpdatingLocation() was called.")
-//            if updatingLocationState == .updating {
-//                updatingLocationState = .stop
-//                locationManager.stopMonitoringSignificantLocationChanges()
-//                clearDeviceLocation()
-//            }
-//        }
-//    }
-//
-//    // MARK: - CLLocationManager Delegate
-//
-//    extension AppStateController: CLLocationManagerDelegate {
-//        // [Note] If the user’s choice doesn’t change the authorization status
-//        //     after you call the requestWhenInUseAuthorization() or requestAlwaysAuthorization()
-//        //     method, the location manager doesn’t report the current authorization status to
-//        //     this method—the location manager only reports changes.
-//        //
-//        // [Note] An app's authorization status changes in response to users’ actions.
-//        //     Users can change permission for apps to use location information at any time.
-//        //     The user can:
-//        //     - Change an app’s location authorization in Settings > Privacy > Location Services,
-//        //       or in Settings > (the app) > Location Services.
-//        //     - Turn location services on or off globally in Settings > Privacy > Location Services.
-//        //     - Choose Reset Location & Privacy in Settings > General > Reset.
-//        func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-//            // Tells the delegate when the app creates the location manager
-//            // and when the authorization status changes.
-//            debugLog("locationManagerDidChangeAuthorization(_:) was called.")
-//
-//            var authorized = false
-//            switch manager.authorizationStatus {
-//            case .notDetermined,
-//                 // The user has not chosen whether the app can use location services
-//                 .restricted,
-//                 // The app is not authorized to use location services
-//                 .denied:
-//                 // The user denied the use of location services for the app or they
-//                 // are disabled globally in Settings.
-//                authorized = false
-//            case .authorizedAlways,
-//                // The user authorized the app to start location services at any time
-//                 .authorizedWhenInUse:
-//                // The user authorized the app to start location services while it is in use
-//                authorized = true
-//            @unknown default:
-//                fatalError("Unknown authorization status.")
-//            }
-//            locationServicesAuthorized = authorized
-//            debugLog(" - authorized = \(authorized ? "Yes" : "No")")
-//
-//            // Significant-change location service does not handle the accuracy.
-//            //
-//            //    switch manager.accuracyAuthorization {
-//            //    case .fullAccuracy:
-//            //        // The user authorized the app to access location data with full accuracy
-//            //    case .reducedAccuracy:
-//            //        // The user authorized the app to access location data with reduced accuracy
-//            //    @unknown default:
-//            //        fatalError("Unknown accuracy level.")
-//            //    }
-//        }
-//
-//        // MARK: Handling Errors
-//
-//        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//            // Tells the delegate that the location manager was unable to retrieve a location value.
-//            debugLog("locationManager(_:didFailWithError) was called. error = \(error.localizedDescription)")
-//            if let error = error as? CLError, error.code == .denied {
-//                // Location updates are not authorized.
-//                stopUpdatingLocation()
-//                return
-//            }
-//        }
-//
-//        // MARK: Responding to Location Events
-//
-//        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//            // Tells the delegate that new location data is available
-//            debugLog("locationManager(_:didUpdateLocations) was called.")
-//            // [Note]
-//            //    The locations parameter always contains at least one location
-//            //    and may contain more than one. Locations are always reported
-//            //    in the order in which they were determined, so the most recent
-//            //    location is always the *last* item in the array
-//            guard let location = locations.last else { return }
-//
-//            // [Note]
-//            //    Before using a location value, check the time stamp of the CLLocation
-//            //    object. Because the system may return cached locations, checking
-//            //    the time stamp lets you know whether to update your interface right
-//            //    away or perhaps wait for a new location.
-//
-//            debugLog("LOC: updated location = \(location)")
-//
-//            // update the device location and stop updating
-//            if let newDeviceLocation = makeDeviceLocation(location: location) {
-//                deviceLocation = newDeviceLocation
-//                stopUpdatingLocation()
-//                debugLog("LOC: updated device location = \(newDeviceLocation)")
-//            }
-//        }
-//
-//        private func makeDeviceLocation(location: CLLocation) -> DeviceLocation? {
-//            // A negative value of horizontalAccuracy indicates that
-//            // the latitude and longitude are invalid.
-//            guard location.horizontalAccuracy >= 0 else { return nil }
-//
-//            let latitude = location.coordinate.latitude
-//            let longitude = location.coordinate.longitude
-//            let horizontalAccuracy = location.horizontalAccuracy
-//
-//            var altitude: Double = 0
-//            // If verticalAccuracy is 0 or a negative value, altitude is invalid.
-//            if location.verticalAccuracy > 0 {
-//                altitude = location.altitude
-//            }
-//            let verticalAccuracy = location.verticalAccuracy
-//
-//            // Don't check the timestamp because when the device does not move,
-//            // the location's timestamp will be very old.
-//            let timestamp = location.timestamp
-//            return DeviceLocation(latitude: latitude,
-//                                  longitude: longitude,
-//                                  altitude: altitude,
-//                                  horizontalAccuracy: horizontalAccuracy,
-//                                  verticalAccuracy: verticalAccuracy,
-//                                  timestamp: timestamp)
-//            //    let currentTime = Date()
-//            //    var deviceLocation: DeviceLocation?
-//            //    if currentTime.timeIntervalSince(timestamp) < 5 * 60 { // [sec]
-//            //        deviceLocation = DeviceLocation(latitude: latitude,
-//            //                                        longitude: longitude,
-//            //                                        altitude: altitude,
-//            //                                        horizontalAccuracy: horizontalAccuracy,
-//            //                                        verticalAccuracy: verticalAccuracy,
-//            //                                        timestamp: timestamp)
-//            //    }
-//            //    return deviceLocation
-//        }
-//
-//        //    func locationManager(_ manager: CLLocationManager, didUpdateTo: CLLocation, from: CLLocation) {
-//        //        // Tells the delegate that a new location value is available
-//        //    }
-//
-//        func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
-//            // Tells the delegate that updates will no longer be deferred
-//            // swiftlint:disable line_length
-//            debugLog("locationManager(_:didFinishDeferredUpdatesWithError) was called. error = \(error?.localizedDescription ?? "")")
-//        }
-//
-//        // MARK: Pausing Location Updates
-//
-//        func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-//            // Tells the delegate that location updates were paused
-//            debugLog("locationManagerDidPauseLocationUpdates(_:) was called.")
-//        }
-//
-//        func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
-//            // Tells the delegate that the delivery of location updates has resumed
-//            debugLog("locationManagerDidResumeLocationUpdates(_:) was called.")
-//        }
-//
-//        //    // MARK: Responding to Heading Events
-//        //
-//        //    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-//        //        // Tells the delegate that the location manager received updated heading information.
-//        //        debugLog("locationManager(_:didUpdateHeading) was called.")
-//        //    }
-//        //
-//        //    func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
-//        //        // Asks the delegate whether the heading calibration alert should be displayed
-//        //        return true
-//        //    }
-//
-//        //    // MARK: Responding to Region Events
-//        //
-//        //    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-//        //        // Tells the delegate that the user entered the specified region
-//        //        debugLog("locationManager(_:didEnterRegion) was called.")
-//        //    }
-//        //
-//        //    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-//        //        // Tells the delegate that the user left the specified region
-//        //        debugLog("locationManager(_:didExitRegion) was called.")
-//        //    }
-//        //
-//        //    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-//        //        // Tells the delegate about the state of the specified region
-//        //        debugLog("locationManager(_:didDetermineState:for:) was called.")
-//        //    }
-//        //
-//        //    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
-//        //        // Tells the delegate that a region monitoring error occurred
-//        //        debugLog("locationManager(_:monitoringDidFailFor:withError:) was called. error = \(error.localizedDescription)")
-//        //    }
-//        //
-//        //    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-//        //        // Tells the delegate that a new region is being monitored
-//        //        debugLog("locationManager(_:didStartMonitoringFor:) was called.")
-//        //    }
-//
-//        //    // MARK: Responding to Visit Events
-//        //
-//        //    func locationManager(_ manager: CLLocationManager, didVisit visit: CLVisit) {
-//        //        // Tells the delegate that a new visit-related event was received
-//        //        debugLog("locationManager(_:didVisit:) was called.")
-//        //    }
-//    }

@@ -8,8 +8,6 @@
 import CoreLocation
 
 final class LocationManager: NSObject {
-//    typealias LocationContinuation = CheckedContinuation<DeviceLocation, Error>
-
     private let manager: CLLocationManager
     let locationServiceSupported: Bool
     var locationServicesAuthorized = false
@@ -17,7 +15,6 @@ final class LocationManager: NSObject {
 
     enum UpdatingState: Int { case idle = 0, updating }
     private var updatingState = UpdatingState.idle
-//    private var continuation: LocationContinuation?
 
     override init() {
         manager = CLLocationManager()
@@ -58,26 +55,6 @@ extension LocationManager {
             // do nothing. just ignore
         }
     }
-
-//    func currentLocation() async -> DeviceLocation? {
-//        debugLog("LM: currentLocation() was called.")
-//        // If the Significant-change location services is not supported, return nil
-//        guard locationServiceSupported else { return nil }
-//
-//        var deviceLocation: DeviceLocation?
-//        do {
-//            debugLog("LM: startUpdatingLocation() will start.")
-//            deviceLocation = try await withCheckedThrowingContinuation { continuation in
-//                self.continuation = continuation
-//                self.startUpdating()
-//            }
-//            debugLog("LM: startUpdatingLocation() finished. Device location = \(String(describing: deviceLocation))")
-//        } catch {
-//            // do nothing (nil will be returned)
-//            debugLog("LM: Error: failed to get current device location. error = \(error.localizedDescription)")
-//        }
-//        return deviceLocation
-//    }
 
     // Start the location services
     //
@@ -187,16 +164,6 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // Tells the delegate that the location manager was unable to retrieve a location value.
         debugLog("LM: locationManager(_:didFailWithError) was called. error = \(error.localizedDescription)")
-//        stopUpdating()
-
-//        continuation?.resume(throwing: error)
-//        continuation = nil  // do not re-use
-
-//        if let error = error as? CLError, error.code == .denied {
-//            // Location updates are not authorized.
-//            stopUpdatingLocation()
-//            return
-//        }
     }
 
     // MARK: Responding to Location Events
@@ -224,15 +191,8 @@ extension LocationManager: CLLocationManagerDelegate {
 
         // update the device location and stop updating
         if let newDeviceLocation = makeDeviceLocation(location: location) {
-//            stopUpdating()
-
-//            DispatchQueue.main.async {
-                self.currentLocation = newDeviceLocation
-                debugLog("LM: current device location was updated \(newDeviceLocation)")
-//            }
-
-//            continuation?.resume(returning: newDeviceLocation)
-//            continuation = nil // do not re-use the continuation
+            self.currentLocation = newDeviceLocation
+            debugLog("LM: current device location was updated \(newDeviceLocation)")
         } else {
             // do nothing. Just continue updating
         }

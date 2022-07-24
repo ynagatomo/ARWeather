@@ -23,19 +23,16 @@ struct LocationListView: View {
         appStateController.locations.count < AppConstant.maximulLocationRegistrationCount
     }
 
-//    let hereLocation = Location(name: "HERE", isHere: true)
-
     var body: some View {
         NavigationSplitView {
             List(selection: $selectedLocation) {
-                Section(header: Text("current location")) {
+                Section(header: Text("list_section_current_location", comment: "Location List: section")) {
                     NavigationLink(value: appStateController.currentLocation) {
                         LocationView(location: appStateController.currentLocation)
                     }
-//                    .disabled(!appStateController.locationServiceSupported)
                 }
 
-                Section(header: Text("favorite")) {
+                Section(header: Text("list_section_favorite", comment: "Location List: section")) {
                     ForEach(appStateController.locations.filter({
                         $0.favorite
                     })) { location in
@@ -45,7 +42,7 @@ struct LocationListView: View {
                     }
                 }
 
-                Section(header: Text("registered places")) {
+                Section(header: Text("list_section_registered_places", comment: "Location List: section")) {
                     ForEach(appStateController.locations) { location in
                         NavigationLink(value: location) {
                             LocationView(location: location)
@@ -59,7 +56,7 @@ struct LocationListView: View {
                 }
             }
             .onChange(of: selectedLocation) { newValue in
-                debugLog("DEBUG: selectedLocation was changed.")
+                debugLog("APP: selectedLocation was changed.")
                 if let newValue, newValue.task == nil {
                     let task = Task.detached(priority: .userInitiated) {
                         await appStateController.checkWeather(for: newValue.id)
@@ -74,7 +71,7 @@ struct LocationListView: View {
                     #endif
                 }
             }
-            .navigationTitle("LOCATIONS")
+            .navigationTitle("navi_title_locations")
             .toolbar {
                 ToolbarItemGroup(placement: .primaryAction) {
                     #if DEBUG
@@ -83,7 +80,7 @@ struct LocationListView: View {
                     })
                     #endif
                     Button(action: { showingAddLocation = true }, label: {
-                        Label("add", systemImage: "plus")
+                        Label("toolbar_add", systemImage: "plus")
                     })
                     .disabled(!canAdd)
                 }
@@ -91,10 +88,10 @@ struct LocationListView: View {
                 // It sometime appears and sometime does not.
                 ToolbarItemGroup(placement: .secondaryAction) { // .bottomBar) {
                     Button(action: { showingSettings = true }, label: {
-                        Label("SETTINGS", systemImage: "gear")
+                        Label("toolbar_settings", systemImage: "gear")
                     })
                     Button(action: { showingAbout = true }, label: {
-                        Label("ABOUT", systemImage: "note.text")
+                        Label("toolbar_about", systemImage: "note.text")
                     })
                 }
             }
@@ -123,7 +120,6 @@ struct LocationListView: View {
     }
 
     private func removeLocation(at index: Int) {
-//        debugLog("DEBUG: removeLocation(at:) was called.")
         appStateController.removeLocation(at: index)
         appStateController.storeLocations() // store them into UserDefaults
     }

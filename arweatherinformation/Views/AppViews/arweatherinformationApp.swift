@@ -39,10 +39,7 @@ struct ARWeatherApp: App {
         startedCount += 1
         if startedCount % 10 == 0 {
             requestReview()
-            debugLog("DEBUG: requestReview() was called.")
-//            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-//                SKStoreReviewController.requestReview(in: scene)
-//            }
+            debugLog("APP: requestReview() was called.")
         }
     }
 }

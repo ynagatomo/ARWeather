@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ARWeatherView: View {
-//    @ObservedObject var appStateController: AppStateController
+    //    @ObservedObject var appStateController: AppStateController
     let name: String
     let modelIndex: Int
     let hourlyForecast: [HourForecast]
@@ -22,17 +22,9 @@ struct ARWeatherView: View {
         ARContainerView(hourForecast: hourlyForecast[hourIndex],
                         scale: scale,
                         modelIndex: modelIndex)
-//        Color.clear
             .overlay {
                 VStack {
                     HStack(alignment: .top) {
-                        //    // Share
-                        //    Button(action: {}) {
-                        //        Image(systemName: "square.and.arrow.up")
-                        //            .font(.title)
-                        //            .padding(.leading, 40)
-                        //            .padding(.top, 40)
-                        //    }
                         // Share (placeholder for ARView's button)
                         Color.clear
                             .frame(width: 40, height: 40)
@@ -96,21 +88,21 @@ struct ARWeatherView: View {
     private func goBackward() {
         if hourIndex > 0 {
             hourIndex -= 1
+            SoundManager.share.play(.hourflip)
         } else {
             hourIndex = hourlyForecast.count - 1
+            SoundManager.share.play(.hourflipend)
         }
-        // hapticsSimpleSuccess()
-        SoundManager.share.play(.hourflip)
     }
 
     private func goForeward() {
         if hourIndex == hourlyForecast.count - 1 {
             hourIndex = 0 // reset
+            SoundManager.share.play(.hourflipend)
         } else {
             hourIndex += 1
+            SoundManager.share.play(.hourflip)
         }
-        // hapticsSimpleSuccess()
-        SoundManager.share.play(.hourflip)
     }
 
     private func scaleUp() {
@@ -153,7 +145,6 @@ struct ForecastInfoView: View {
             }
             Text(name)
                 .lineLimit(1)
-//                .padding(1)
             Text(forecast.dateDescription)
                 .font(.title2).bold()
             HStack {

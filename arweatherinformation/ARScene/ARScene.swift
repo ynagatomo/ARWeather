@@ -13,7 +13,6 @@ import Combine
 final class ARScene {
     private var anchor: AnchorEntity!
     private var arView: ARView!
-//    private var isFirstTime = true
     private var renderLoopSubscription: Cancellable?
 
     private var modelIndex: Int = 0
@@ -142,17 +141,11 @@ extension ARScene {
                                                                scaleIndex: scaleIndex)
         // set the stage model in front of the camera
         // it is necessary to handle camera rotation and position due to the space heading to north
-        let modifiedPosition: SIMD3<Float>
-//        if isFirstTime {
-//            // when the first time, the camera's transformation is not stable
-//            modifiedPosition = .zero
-//            isFirstTime = false
-//        } else {
-            // modify the initial baseEntity position due to heading to north
-            modifiedPosition = simd_act(arView.cameraTransform.rotation, SIMD3<Float>(0, 0, -0.3))
-                                    + arView.cameraTransform.translation
-                                    + posAndScale.position
-//        }
+        // modify the initial baseEntity position due to heading to north
+        let modifiedPosition = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
+                                + arView.cameraTransform.translation
+                                + posAndScale.position
+
         debugLog("AR: camera rotation = \(arView.cameraTransform.rotation)")
         debugLog("AR: camera position = \(arView.cameraTransform.translation)")
         debugLog("AR: modified position = \(modifiedPosition)")
@@ -189,7 +182,7 @@ extension ARScene {
     // setup Skydome
 
     private func setupSkydome(of model: ModelEntity) {
-        assert(model.model?.materials.count == 4, "The base model should have four materials.")
+        assert(model.model?.materials.count ?? 4 >= 4, "The base model should have more than four materials.")
         // materials[0]: sky-dome's material
         if let pbMaterial = model.model?.materials[0] as? PhysicallyBasedMaterial {
             var modifiedMaterial = pbMaterial
@@ -212,7 +205,12 @@ extension ARScene {
         for index in 0 ..< colors.count {
             if let pbMaterial = model.model?.materials[index] as? PhysicallyBasedMaterial {
                 var modifiedMaterial = pbMaterial
-                modifiedMaterial.emissiveColor.color = colors[index]
+                if colors[index].0 { // Unlit
+                    modifiedMaterial.emissiveColor.color = colors[index].1
+                } else { // not Unlit
+                    modifiedMaterial.baseColor.tint = colors[index].1
+                }
+
                 model.model?.materials[index] = modifiedMaterial
             } else {
                 assertionFailure("AR: failed to access to the material of the terrain model. index = \(index)")

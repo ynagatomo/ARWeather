@@ -9,8 +9,6 @@ import UIKit
 import ARKit
 import RealityKit
 
-// swiftlint:disable file_length
-
 final class ARViewController: UIViewController {
     private var arView: ARView!
 //    private var cameraTrackingState: ARCamera.TrackingState = .notAvailable
@@ -53,7 +51,7 @@ final class ARViewController: UIViewController {
             // automaticallyConfigureSession = true is Ok
             // for scene reconstruction for mesh
             arView = ARView(frame: .zero, cameraMode: .ar,
-                            automaticallyConfigureSession: false)
+                            automaticallyConfigureSession: true) // false)
         }
         #endif
         // arView.session.delegate = self
@@ -65,8 +63,6 @@ final class ARViewController: UIViewController {
 
         let anchorEntity = AnchorEntity(world: .zero) // AppConstant.arWorldOrigin)
         arView.scene.addAnchor(anchorEntity)
-//        arScene = ARScene(arView: arView, anchor: anchorEntity)
-//        arScene.setup(modelIndex: modelIndex)
 
         #if targetEnvironment(simulator)
         anchorEntity.addChild(perspectiveCamera)
@@ -113,11 +109,6 @@ final class ARViewController: UIViewController {
         #if !targetEnvironment(simulator)
         if !ProcessInfo.processInfo.isiOSAppOnMac {
             let config = ARWorldTrackingConfiguration()
-            //    if AppSettings.share.enablePlaneDetection { // Plane detection
-            //        config.planeDetection = [.horizontal]
-            //        debugLog("AR: plane detection was enabled.")
-            //    }
-
             config.worldAlignment = .gravityAndHeading // -Z is heading to north
 
             //    if AppSettings.share.enablePeopleOcclusion { // People occlusion
@@ -156,68 +147,6 @@ final class ARViewController: UIViewController {
         debugLog("AR: ARViewController.viewDidAppear() was called.")
         super.viewDidAppear(animated)
 
-        //        // Setup the alert Label
-        //        alertLabel = UILabel()
-        //        alertLabel.font = UIFont.systemFont(ofSize: 18)
-        //        alertLabel.textAlignment = NSTextAlignment.center
-        //        alertLabel.numberOfLines = 0
-        //        alertLabel.frame.size = CGSize(width: 300, height: 150)
-        //        let screenWidth = view.frame.size.width
-        //        let screenHeight = view.frame.size.height
-        //        alertLabel.center = CGPoint(x: screenWidth / 2, y: screenHeight / 2)
-        //        alertLabel.text = ""
-        //        alertLabel.textColor = UIColor.green
-        //        // alertLabel.backgroundColor = UIColor.black
-        //        alertLabel.layer.borderColor = UIColor.green.cgColor
-        //        alertLabel.layer.borderWidth = 1
-        //        alertLabel.layer.masksToBounds = true
-        //        alertLabel.layer.cornerRadius = 10
-        //        alertLabel.isHidden = true
-        //        self.view.addSubview(alertLabel)
-        //
-        //        // Set the delegate after setting of AlertLabel
-        //        // because the delegate calls use the AlertLabel
-        //        arView.session.delegate = self
-        //
-        //        // Start the AR session.
-        //        #if !targetEnvironment(simulator)
-        //        if !ProcessInfo.processInfo.isiOSAppOnMac {
-        //            let config = ARWorldTrackingConfiguration()
-        //            //    if AppSettings.share.enablePlaneDetection { // Plane detection
-        //            //        config.planeDetection = [.horizontal]
-        //            //        debugLog("AR: plane detection was enabled.")
-        //            //    }
-        //
-        //            config.worldAlignment = .gravityAndHeading // -Z is heading to north
-        //
-        //            //    if AppSettings.share.enablePeopleOcclusion { // People occlusion
-        //            //        if ARViewController.isPeopeOcclusionSupported {
-        //            //            config.frameSemantics.insert(.personSegmentationWithDepth)
-        //            //            debugLog("AR: people occlusion was enabled.")
-        //            //        }
-        //            //    }
-        //
-        //            //    // [Note]
-        //            //    // When you enable scene reconstruction, ARKit provides a polygonal mesh
-        //            //    // that estimates the shape of the physical environment.
-        //            //    // If you enable plane detection, ARKit applies that information to the mesh.
-        //            //    // Where the LiDAR scanner may produce a slightly uneven mesh on a real-world surface,
-        //            //    // ARKit smooths out the mesh where it detects a plane on that surface.
-        //            //    // If you enable people occlusion, ARKit adjusts the mesh according to any people
-        //            //    // it detects in the camera feed. ARKit removes any part of the scene mesh that
-        //            //    // overlaps with people
-        //            //    if AppSettings.share.enableObjectOcclusion { // Object occlusion
-        //            //        if ARViewController.isObjectOcclusionSupported {
-        //            //            // Enable the object occlusion
-        //            //            config.sceneReconstruction = .mesh
-        //            //            arView.environment.sceneUnderstanding.options.insert(.occlusion)
-        //            //            debugLog("AR: object occlusion was enabled.")
-        //            //        }
-        //            //    }
-        //            arView.session.run(config)
-        //        }
-        //        #endif
-
         // start handling the render-loop
         arScene.startSession()
     }
@@ -241,10 +170,6 @@ extension ARViewController {
         self.hourForecast = hourForecast
         self.scale = scale
 
-//        guard cameraTrackingState != .notAvailable else {
-//            debugLog("DEBUG2: AR: ARCamera-tracking-state is .notAvailable. So the ARScene update is pending.")
-//            return
-//        }
         arScene.update(hourForecast: hourForecast, scale: scale)
     }
 
@@ -327,7 +252,6 @@ extension ARViewController: ARSessionDelegate {
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         // swiftlint:disable line_length
         debugLog("AR: AR-DELEGATE: The session(_:cameraDidChangeTrackingState:) was called. cameraState = \(camera.trackingState)")
-//        cameraTrackingState = camera.trackingState
         if camera.trackingState == .normal {
             // Camera is ready to be used. Update the ARScene.
             arScene.update(hourForecast: hourForecast, scale: scale)
@@ -343,11 +267,6 @@ extension ARViewController: ARSessionDelegate {
     //        // The orientation of the camera, expressed as roll, pitch, and yaw values.
     //        let cameraEulerAngles = frame.camera.eulerAngles // simd_float3
     //    }
-
-    // Camera un-authorization error should be handled
-//    func session(_ session: ARSession, didFailWithError error: Error) {
-//        debugLog("session(_:didFailWithError) was called. error = \(error.localizedDescription)")
-//    }
 
     /// tells that an error was occurred
     ///
@@ -403,27 +322,10 @@ extension ARViewController: ARSessionDelegate {
             debugLog("AR: AR-DELEGATE:     The camera access is not authorized.")
 
             // Show the alert message.
-            showAlertLabel(with:   // TODO: localize the below string
-            "The use of the camera is not permitted.\nPlease allow it with the Settings app.")
+            // "The use of the camera is not permitted.\nPlease allow it with the Settings app."
+            showAlertLabel(with:
+                           NSLocalizedString("cameraAlert_not_permitted", comment: "Camera Alert message"))
 
-            // show an alert
-            //    DispatchQueue.main.async {
-            //        let alertController =
-            //            UIAlertController(title: NSLocalizedString("ar_camera_notallowed_alert_title",
-            //                              comment: "Alert Title: Camera access is not allowed."),
-            //                              message: NSLocalizedString("ar_camera_notallowd_alert_message",
-            //                              comment: "Alert Message: Camera access is not allowed."),
-            //                              preferredStyle: .alert)
-            //        // Just close the alert. When the setting with Setting app is changed,
-            //        // the app will be restarted by the system.
-            //        let restartAction = UIAlertAction(title: NSLocalizedString("ar_camera_notallowd_alert_ok",
-            //                              comment: "Alert Button: Camera access is not allowed."),
-            //                              style: .default) { _ in
-            //            alertController.dismiss(animated: true, completion: nil)
-            //        }
-            //        alertController.addAction(restartAction)
-            //        self.present(alertController, animated: true, completion: nil)
-            //    }
         } else if arerror.errorCode == ARError.Code.unsupportedConfiguration.rawValue {
             // Error: Unsupported Configuration
             // It means that now the AR session is trying to run on macOS(w/M1) or Simulator.
