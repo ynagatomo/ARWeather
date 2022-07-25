@@ -10,6 +10,7 @@
 		BA0E60AA2856D6BD009D6CAF /* arweatherinformationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0E60A92856D6BD009D6CAF /* arweatherinformationApp.swift */; };
 		BA0E60AE2856D6BE009D6CAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0E60AD2856D6BE009D6CAF /* Assets.xcassets */; };
 		BA0E60B12856D6BE009D6CAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0E60B02856D6BE009D6CAF /* Preview Assets.xcassets */; };
+		BA117673288EC05500D85182 /* village.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA117672288EC05500D85182 /* village.usdz */; };
 		BA1186E3288E3A77008263FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA1186E1288E3A77008263FE /* InfoPlist.strings */; };
 		BA1186E6288E3A77008263FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA1186E4288E3A77008263FE /* Localizable.strings */; };
 		BA1381FE286FDF3B004DE7C7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1381FD286FDF3B004DE7C7 /* LocationManager.swift */; };
@@ -34,14 +35,13 @@
 		BA719B1C287572F80085C637 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA719B1B287572F80085C637 /* OnboardingView.swift */; };
 		BA882486288CD67B00380797 /* DeviceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA882485288CD67B00380797 /* DeviceLocation.swift */; };
 		BA882488288CFDB400380797 /* hourflipReset.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA882487288CFDB400380797 /* hourflipReset.m4a */; };
-		BA91AFC9288D5F87000F965F /* town.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA91AFC8288D5F87000F965F /* town.usdz */; };
 		BA938B9A287674BA00F26FAE /* HourlyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B99287674BA00F26FAE /* HourlyForecastView.swift */; };
 		BA938B9C287676DD00F26FAE /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B9B287676DD00F26FAE /* DailyForecastView.swift */; };
 		BA938B9E287677B900F26FAE /* HourlySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B9D287677B900F26FAE /* HourlySample.swift */; };
 		BA9CCF3D287E6EA400B92F63 /* hourflip.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA9CCF3C287E6EA400B92F63 /* hourflip.m4a */; };
 		BA9CCF3F287E747100B92F63 /* scaleup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA9CCF3E287E747100B92F63 /* scaleup.mp3 */; };
 		BAA654B9288A3A79006F02B7 /* Double-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA654B8288A3A79006F02B7 /* Double-extensions.swift */; };
-		BAC21A56288D3F5000471EBD /* village.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAC21A55288D3F5000471EBD /* village.usdz */; };
+		BAAE1ABE288EC4DB00478C11 /* town.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAAE1ABD288EC4DB00478C11 /* town.usdz */; };
 		BAC21A5A288D51A600471EBD /* field.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAC21A59288D51A600471EBD /* field.usdz */; };
 		BAC4997B287294A3008F80DE /* AddLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4997A287294A3008F80DE /* AddLocationView.swift */; };
 		BAD16F09288D07C300CD964F /* base.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAD16F08288D07C300CD964F /* base.usdz */; };
@@ -70,6 +70,7 @@
 		BA0E60B02856D6BE009D6CAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA0E60B82856D963009D6CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA0E60B92856DD61009D6CAF /* arweatherinformation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = arweatherinformation.entitlements; sourceTree = "<group>"; };
+		BA117672288EC05500D85182 /* village.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = village.usdz; sourceTree = "<group>"; };
 		BA1186E2288E3A77008263FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BA1186E5288E3A77008263FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA1381FD286FDF3B004DE7C7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -98,14 +99,13 @@
 		BA719B1B287572F80085C637 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		BA882485288CD67B00380797 /* DeviceLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLocation.swift; sourceTree = "<group>"; };
 		BA882487288CFDB400380797 /* hourflipReset.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hourflipReset.m4a; sourceTree = "<group>"; };
-		BA91AFC8288D5F87000F965F /* town.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = town.usdz; sourceTree = "<group>"; };
 		BA938B99287674BA00F26FAE /* HourlyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastView.swift; sourceTree = "<group>"; };
 		BA938B9B287676DD00F26FAE /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
 		BA938B9D287677B900F26FAE /* HourlySample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlySample.swift; sourceTree = "<group>"; };
 		BA9CCF3C287E6EA400B92F63 /* hourflip.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hourflip.m4a; sourceTree = "<group>"; };
 		BA9CCF3E287E747100B92F63 /* scaleup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scaleup.mp3; sourceTree = "<group>"; };
 		BAA654B8288A3A79006F02B7 /* Double-extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double-extensions.swift"; sourceTree = "<group>"; };
-		BAC21A55288D3F5000471EBD /* village.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = village.usdz; sourceTree = "<group>"; };
+		BAAE1ABD288EC4DB00478C11 /* town.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = town.usdz; sourceTree = "<group>"; };
 		BAC21A59288D51A600471EBD /* field.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = field.usdz; sourceTree = "<group>"; };
 		BAC4997A287294A3008F80DE /* AddLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationView.swift; sourceTree = "<group>"; };
 		BAD16F08288D07C300CD964F /* base.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = base.usdz; sourceTree = "<group>"; };
@@ -237,9 +237,9 @@
 			isa = PBXGroup;
 			children = (
 				BAD16F08288D07C300CD964F /* base.usdz */,
-				BAC21A55288D3F5000471EBD /* village.usdz */,
+				BAAE1ABD288EC4DB00478C11 /* town.usdz */,
+				BA117672288EC05500D85182 /* village.usdz */,
 				BAC21A59288D51A600471EBD /* field.usdz */,
-				BA91AFC8288D5F87000F965F /* town.usdz */,
 				BA4C52E62889618B0022EE57 /* cloud.usdz */,
 			);
 			path = ModelAssets;
@@ -412,14 +412,14 @@
 				BAD16F09288D07C300CD964F /* base.usdz in Resources */,
 				BA1186E3288E3A77008263FE /* InfoPlist.strings in Resources */,
 				BA6D10222869804D003E5AB0 /* Colors.xcassets in Resources */,
+				BA117673288EC05500D85182 /* village.usdz in Resources */,
 				BAC21A5A288D51A600471EBD /* field.usdz in Resources */,
 				BA9CCF3F287E747100B92F63 /* scaleup.mp3 in Resources */,
 				BA882488288CFDB400380797 /* hourflipReset.m4a in Resources */,
 				BA9CCF3D287E6EA400B92F63 /* hourflip.m4a in Resources */,
-				BAC21A56288D3F5000471EBD /* village.usdz in Resources */,
 				BA4C52E72889618B0022EE57 /* cloud.usdz in Resources */,
 				BA1186E6288E3A77008263FE /* Localizable.strings in Resources */,
-				BA91AFC9288D5F87000F965F /* town.usdz in Resources */,
+				BAAE1ABE288EC4DB00478C11 /* town.usdz in Resources */,
 				BA0E60B12856D6BE009D6CAF /* Preview Assets.xcassets in Resources */,
 				BA0E60AE2856D6BE009D6CAF /* Assets.xcassets in Resources */,
 			);
