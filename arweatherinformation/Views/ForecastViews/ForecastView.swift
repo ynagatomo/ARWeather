@@ -170,10 +170,11 @@ struct ForecastView: View {
             } else {
                 VStack {
                     Text("forecastView_select_a_location", comment: "ForecastView: text")
-                    #if DEBUG
+                    // TODO: remove comment
+                    // #if DEBUG
                     Button("test AR", action: { showingAR = true })
                         .padding()
-                    #endif
+                    // #endif
                 }
             } // if-else
         } // VStack
@@ -199,9 +200,11 @@ struct ForecastView: View {
             }
         } else {
             // do nothing in release mode because this won't happen
-            #if DEBUG
+
+            // TODO: remove comment
+            // #if DEBUG
             forecasts = SampleForecast.sampleHourlyForecasts
-            #endif
+            // #endif
         }
         return forecasts
     }

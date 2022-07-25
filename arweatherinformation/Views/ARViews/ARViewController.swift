@@ -36,7 +36,6 @@ final class ARViewController: UIViewController {
     //        fatalError("init(coder:) has not been implemented")
     //    }
 
-    // swiftlint:disable function_body_length
     override func viewDidLoad() {
         debugLog("AR: ARViewController.viewDidLoad() was called.")
         super.viewDidLoad()
@@ -82,7 +81,17 @@ final class ARViewController: UIViewController {
                          for: .touchUpInside)
         view.addSubview(button)
 
+        arScene = ARScene(arView: arView, anchor: anchorEntity)
+        arScene.setup(modelIndex: modelIndex)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        debugLog("AR: ARViewController.viewDidAppear() was called.")
+        super.viewDidAppear(animated)
+
         // Setup the alert Label
+        // At viewDidLoaded(), the ARView frame-size is not determined.
+        // So the altertLabel should be set here, viewDidAppear()
         alertLabel = UILabel()
         alertLabel.font = UIFont.systemFont(ofSize: 18)
         alertLabel.textAlignment = NSTextAlignment.center
@@ -138,14 +147,6 @@ final class ARViewController: UIViewController {
             arView.session.run(config)
         }
         #endif
-
-        arScene = ARScene(arView: arView, anchor: anchorEntity)
-        arScene.setup(modelIndex: modelIndex)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        debugLog("AR: ARViewController.viewDidAppear() was called.")
-        super.viewDidAppear(animated)
 
         // start handling the render-loop
         arScene.startSession()
@@ -207,12 +208,9 @@ extension ARViewController {
 
 // MARK: - ARSessionDelegate
 extension ARViewController: ARSessionDelegate {
-    #if DEBUG
-    // Monitor the delegate calls during development.
-
     /// tells that ARAnchors was added cause of like a plane-detection
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
-        debugLog("AR: AR-DELEGATE: didAdd anchors: [ARAnchor] : \(anchors)")
+        // debugLog("AR: AR-DELEGATE: didAdd anchors: [ARAnchor] : \(anchors)")
         // <AREnvironmentProbeAnchor> can be added for environmentTexturing
     }
 
@@ -224,7 +222,8 @@ extension ARViewController: ARSessionDelegate {
 
     /// tells that the ARAnchors were removed
     func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {
-        debugLog("AR: AR-DELEGATE: The session(_:didRemove) was called.  [ARAnchor] were removed.")
+        // debugLog("AR: AR-DELEGATE: The session(_:didRemove) was called.  [ARAnchor] were removed.")
+        //
         assertionFailure("The session(_:didUpdate) should not be called.")
     }
 
@@ -252,12 +251,9 @@ extension ARViewController: ARSessionDelegate {
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         // swiftlint:disable line_length
         debugLog("AR: AR-DELEGATE: The session(_:cameraDidChangeTrackingState:) was called. cameraState = \(camera.trackingState)")
-        if camera.trackingState == .normal {
-            // Camera is ready to be used. Update the ARScene.
-            arScene.update(hourForecast: hourForecast, scale: scale)
-        }
+
+        arScene.updateCameraTrackingState(state: camera.trackingState)
     }
-    #endif
 
     //    func session(_ session: ARSession, didUpdate frame: ARFrame) {
     //        // You can get the camera's (device's) position in the virtual space

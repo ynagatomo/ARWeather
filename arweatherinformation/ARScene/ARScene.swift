@@ -10,10 +10,14 @@ import ARKit
 import RealityKit
 import Combine
 
+// swiftlint:disable file_length
+
 final class ARScene {
     private var anchor: AnchorEntity!
     private var arView: ARView!
     private var renderLoopSubscription: Cancellable?
+
+    private var cameraTrackingState: ARCamera.TrackingState = .notAvailable
 
     private var modelIndex: Int = 0
     private var hourForecast: HourForecast!
@@ -124,6 +128,28 @@ extension ARScene {
 
     // MARK: update
 
+    func updateCameraTrackingState(state: ARCamera.TrackingState) {
+        cameraTrackingState = state
+
+        if state != .notAvailable {
+            // AR-camera's tracking state is .limited or .normal
+            let posAndScale = StageModelSpec.stagePositionAndScale(modelIndex: modelIndex,
+                                                                   scaleIndex: scaleIndex)
+            let position = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
+                                + arView.cameraTransform.translation
+                                + posAndScale.position
+
+            debugLog("AR: AR Camera Tracking State was changed to .limited or .normal.")
+            debugLog("AR:    - camera rotation = \(arView.cameraTransform.rotation)")
+            debugLog("AR:    - camera position = \(arView.cameraTransform.translation)")
+            debugLog("AR:    - modified stage position = \(position)")
+            // change the base-entity position
+            baseEntity?.position = position
+        } else {
+            // do nothing
+        }
+    }
+
     func update(hourForecast: HourForecast, scale: Int) {
         self.hourForecast = hourForecast
         self.scaleIndex = scale
@@ -142,9 +168,16 @@ extension ARScene {
         // set the stage model in front of the camera
         // it is necessary to handle camera rotation and position due to the space heading to north
         // modify the initial baseEntity position due to heading to north
-        let modifiedPosition = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
+        let modifiedPosition: SIMD3<Float>
+        if cameraTrackingState == .notAvailable {
+            // AR-camera's tracking state is .notAvailable
+            modifiedPosition = SIMD3<Float>.zero
+        } else {
+            // AR-camera's tracking state is .limited or .normal
+            modifiedPosition = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
                                 + arView.cameraTransform.translation
                                 + posAndScale.position
+        }
 
         debugLog("AR: camera rotation = \(arView.cameraTransform.rotation)")
         debugLog("AR: camera position = \(arView.cameraTransform.translation)")
