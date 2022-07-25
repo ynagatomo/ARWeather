@@ -129,25 +129,61 @@ extension ARScene {
     // MARK: update
 
     func updateCameraTrackingState(state: ARCamera.TrackingState) {
+        // store the ARCamera tracking state
         cameraTrackingState = state
 
-        if state != .notAvailable {
-            // AR-camera's tracking state is .limited or .normal
-            let posAndScale = StageModelSpec.stagePositionAndScale(modelIndex: modelIndex,
-                                                                   scaleIndex: scaleIndex)
-            let position = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
-                                + arView.cameraTransform.translation
-                                + posAndScale.position
+        // update the stage position
+        let position = stagePosition()
+        baseEntity?.position = position
 
-            debugLog("AR: AR Camera Tracking State was changed to .limited or .normal.")
-            debugLog("AR:    - camera rotation = \(arView.cameraTransform.rotation)")
-            debugLog("AR:    - camera position = \(arView.cameraTransform.translation)")
-            debugLog("AR:    - modified stage position = \(position)")
-            // change the base-entity position
-            baseEntity?.position = position
+//        if state != .notAvailable {
+//            // AR-camera's tracking state is .limited or .normal
+//            let posAndScale = StageModelSpec.stagePositionAndScale(modelIndex: modelIndex,
+//                                                                   scaleIndex: scaleIndex)
+//            let position = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
+//                                + arView.cameraTransform.translation
+//                                + posAndScale.position
+//
+//            debugLog("AR: AR Camera Tracking State was changed to .limited or .normal.")
+//            debugLog("AR:    - camera rotation = \(arView.cameraTransform.rotation)")
+//            debugLog("AR:    - camera position = \(arView.cameraTransform.translation)")
+//            debugLog("AR:    - modified stage position = \(position)")
+//            // change the base-entity position
+//            baseEntity?.position = position
+//        } else {
+//            // do nothing
+//        }
+    }
+
+    private func stagePosition() -> SIMD3<Float> {
+        let stagePosition: SIMD3<Float>
+
+        if cameraTrackingState == .notAvailable {
+            // AR-camera's tracking state is .notAvailable
+            stagePosition = SIMD3<Float>.zero
         } else {
-            // do nothing
+            // AR-camera's tracking state is .limited or .normal
+            let cameraRotation = arView.cameraTransform.rotation
+
+            // if the rotation = zero, it is un-natural, therefore, do not use camera's transform
+            if cameraRotation == simd_quatf(real: 1, imag: SIMD3<Float>(0, 0, 0)) {
+                stagePosition = .zero
+            } else {
+                let posAndScale = StageModelSpec.stagePositionAndScale(modelIndex: modelIndex,
+                                                                       scaleIndex: scaleIndex)
+                let cameraTranslation = arView.cameraTransform.translation
+
+                stagePosition = simd_act(cameraRotation, StageModelSpec.stageOrigin)
+                + cameraTranslation
+                + posAndScale.position
+            }
         }
+
+        debugLog("A%: stagePosition() was called.")
+        debugLog("AR:  - camera rotation = \(arView.cameraTransform.rotation)")
+        debugLog("AR:  - camera position = \(arView.cameraTransform.translation)")
+        debugLog("AR:  - calculated stage position = \(stagePosition)")
+        return stagePosition
     }
 
     func update(hourForecast: HourForecast, scale: Int) {
@@ -163,26 +199,30 @@ extension ARScene {
 
         assert(baseEntity == nil)
         baseEntity = Entity()
+
         let posAndScale = StageModelSpec.stagePositionAndScale(modelIndex: modelIndex,
                                                                scaleIndex: scaleIndex)
+
         // set the stage model in front of the camera
         // it is necessary to handle camera rotation and position due to the space heading to north
         // modify the initial baseEntity position due to heading to north
-        let modifiedPosition: SIMD3<Float>
-        if cameraTrackingState == .notAvailable {
-            // AR-camera's tracking state is .notAvailable
-            modifiedPosition = SIMD3<Float>.zero
-        } else {
-            // AR-camera's tracking state is .limited or .normal
-            modifiedPosition = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
-                                + arView.cameraTransform.translation
-                                + posAndScale.position
-        }
+        let modifiedPosition: SIMD3<Float> = stagePosition()
 
-        debugLog("AR: camera rotation = \(arView.cameraTransform.rotation)")
-        debugLog("AR: camera position = \(arView.cameraTransform.translation)")
-        debugLog("AR: modified position = \(modifiedPosition)")
-        baseEntity?.position = modifiedPosition // posAndScale.position
+        //        if cameraTrackingState == .notAvailable {
+//            // AR-camera's tracking state is .notAvailable
+//            modifiedPosition = SIMD3<Float>.zero
+//        } else {
+//            // AR-camera's tracking state is .limited or .normal
+//            modifiedPosition = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
+//                                + arView.cameraTransform.translation
+//                                + posAndScale.position
+//        }
+//
+//        debugLog("AR: camera rotation = \(arView.cameraTransform.rotation)")
+//        debugLog("AR: camera position = \(arView.cameraTransform.translation)")
+//        debugLog("AR: modified position = \(modifiedPosition)")
+
+        baseEntity?.position = modifiedPosition
         baseEntity?.scale = posAndScale.scale
         anchor.addChild(baseEntity!)
 

@@ -62,19 +62,19 @@ struct StageModelSpec {
     private static let stagePositionAndScales = [     // ... position for (2)
         // #0: village
         [   // (position, scale)
-            (position: SIMD3<Float>(0, 0, 0), scale: SIMD3<Float>(0.4, 0.4, 0.4)), // #0: Small
+            (position: SIMD3<Float>(0, 0, 0), scale: SIMD3<Float>(0.6, 0.6, 0.6)), // #0: Small
             (position: SIMD3<Float>(0, -0.5, 0), scale: SIMD3<Float>(10, 10, 10)), // #1: Middle
             (position: SIMD3<Float>(0, -2, 0), scale: SIMD3<Float>(30, 30, 30))    // #2: Large
         ],
         // #1: field
         [   // (position, scale)
-            (position: SIMD3<Float>(0, 0, 0), scale: SIMD3<Float>(0.4, 0.4, 0.4)), // #0: Small
+            (position: SIMD3<Float>(0, 0, 0), scale: SIMD3<Float>(0.6, 0.6, 0.6)), // #0: Small
             (position: SIMD3<Float>(0, -0.5, 0), scale: SIMD3<Float>(10, 10, 10)), // #1: Middle
             (position: SIMD3<Float>(0, -2, 0), scale: SIMD3<Float>(30, 30, 30))    // #2: Large
         ],
         // #2: town
         [   // (position, scale)
-            (position: SIMD3<Float>(0, 0, 0), scale: SIMD3<Float>(0.4, 0.4, 0.4)), // #0: Small
+            (position: SIMD3<Float>(0, 0, 0), scale: SIMD3<Float>(0.6, 0.6, 0.6)), // #0: Small
             (position: SIMD3<Float>(0, -0.5, 0), scale: SIMD3<Float>(10, 10, 10)), // #1: Middle
             (position: SIMD3<Float>(0, -2, 0), scale: SIMD3<Float>(30, 30, 30))    // #2: Large
         ]
