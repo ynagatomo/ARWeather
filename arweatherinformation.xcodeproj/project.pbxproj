@@ -45,6 +45,7 @@
 		BAC21A5A288D51A600471EBD /* field.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAC21A59288D51A600471EBD /* field.usdz */; };
 		BAC4997B287294A3008F80DE /* AddLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC4997A287294A3008F80DE /* AddLocationView.swift */; };
 		BAD16F09288D07C300CD964F /* base.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAD16F08288D07C300CD964F /* base.usdz */; };
+		BAD18FBA288F5C7200D65D6C /* island.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAD18FB9288F5C7200D65D6C /* island.usdz */; };
 		BAF82745287CF7EA0067A813 /* ARWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF82744287CF7EA0067A813 /* ARWeatherView.swift */; };
 		BAF82747287CF9C50067A813 /* ARContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF82746287CF9C50067A813 /* ARContainerView.swift */; };
 		BAF82749287CFA4B0067A813 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF82748287CFA4B0067A813 /* ARViewController.swift */; };
@@ -109,6 +110,7 @@
 		BAC21A59288D51A600471EBD /* field.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = field.usdz; sourceTree = "<group>"; };
 		BAC4997A287294A3008F80DE /* AddLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationView.swift; sourceTree = "<group>"; };
 		BAD16F08288D07C300CD964F /* base.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = base.usdz; sourceTree = "<group>"; };
+		BAD18FB9288F5C7200D65D6C /* island.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = island.usdz; sourceTree = "<group>"; };
 		BAF82744287CF7EA0067A813 /* ARWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWeatherView.swift; sourceTree = "<group>"; };
 		BAF82746287CF9C50067A813 /* ARContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContainerView.swift; sourceTree = "<group>"; };
 		BAF82748287CFA4B0067A813 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				BAAE1ABD288EC4DB00478C11 /* town.usdz */,
 				BA117672288EC05500D85182 /* village.usdz */,
 				BAC21A59288D51A600471EBD /* field.usdz */,
+				BAD18FB9288F5C7200D65D6C /* island.usdz */,
 				BA4C52E62889618B0022EE57 /* cloud.usdz */,
 			);
 			path = ModelAssets;
@@ -409,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAD18FBA288F5C7200D65D6C /* island.usdz in Resources */,
 				BAD16F09288D07C300CD964F /* base.usdz in Resources */,
 				BA1186E3288E3A77008263FE /* InfoPlist.strings in Resources */,
 				BA6D10222869804D003E5AB0 /* Colors.xcassets in Resources */,

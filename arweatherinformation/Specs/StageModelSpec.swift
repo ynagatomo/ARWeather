@@ -36,18 +36,23 @@ struct StageModelSpec {
     static let rainWindSpeedMin: Double = 10 // [km/h]
 
     static let terrainModelSpecs = [
-        TerrainModelSpec(name: "Village",
+        TerrainModelSpec(name: "Village",    // #0: village
                          filename: "village", // terrain usdz file name wo ext
                          stageRadius: 0.15,  // [m]
                          cloudsPosition: SIMD3<Float>(0, 0.1, 0), // clouds' Y position
                          cloudNumberXZ: (x: 5, z: 7)), // number of cloud on X/Z axis
-        TerrainModelSpec(name: "Field",
+        TerrainModelSpec(name: "Field",     // #1: field
                          filename: "field", // terrain usdz file name wo ext
                          stageRadius: 0.15,  // [m]
                          cloudsPosition: SIMD3<Float>(0, 0.1, 0), // clouds' Y position
                          cloudNumberXZ: (x: 5, z: 7)), // number of cloud on X/Z axis
-        TerrainModelSpec(name: "Town",
+        TerrainModelSpec(name: "Town",     // #2: town
                          filename: "town", // terrain usdz file name wo ext
+                         stageRadius: 0.15,  // [m]
+                         cloudsPosition: SIMD3<Float>(0, 0.1, 0), // clouds' Y position
+                         cloudNumberXZ: (x: 5, z: 7)), // number of cloud on X/Z axis
+        TerrainModelSpec(name: "Island",     // #3: island
+                         filename: "island", // terrain usdz file name wo ext
                          stageRadius: 0.15,  // [m]
                          cloudsPosition: SIMD3<Float>(0, 0.1, 0), // clouds' Y position
                          cloudNumberXZ: (x: 5, z: 7)) // number of cloud on X/Z axis
@@ -73,6 +78,12 @@ struct StageModelSpec {
             (position: SIMD3<Float>(0, -2, 0), scale: SIMD3<Float>(30, 30, 30))    // #2: Large
         ],
         // #2: town
+        [   // (position, scale)
+            (position: SIMD3<Float>(0, 0, 0), scale: SIMD3<Float>(0.6, 0.6, 0.6)), // #0: Small
+            (position: SIMD3<Float>(0, -0.5, 0), scale: SIMD3<Float>(10, 10, 10)), // #1: Middle
+            (position: SIMD3<Float>(0, -2, 0), scale: SIMD3<Float>(30, 30, 30))    // #2: Large
+        ],
+        // #3: island
         [   // (position, scale)
             (position: SIMD3<Float>(0, 0, 0), scale: SIMD3<Float>(0.6, 0.6, 0.6)), // #0: Small
             (position: SIMD3<Float>(0, -0.5, 0), scale: SIMD3<Float>(10, 10, 10)), // #1: Middle
@@ -311,6 +322,38 @@ struct StageModelSpec {
                 (false, UIColor(red: 0.591, green: 0.606, blue: 0.640, alpha: 1)), // matgrounddark
                 (false, UIColor(red: 0.629, green: 0.618, blue: 0.606, alpha: 1)), // mattree
                 (false, UIColor(red: 0.538, green: 0.530, blue: 0.523, alpha: 1))  // mattrunk
+            ]
+        ],
+        [ // #3: island (isUnlit, color)
+            [ // #0: daylight, fine
+                (false, UIColor(red: 0.820, green: 0.963, blue: 0.945, alpha: 1)), // matsea
+                (false, UIColor(red: 0.919, green: 0.909, blue: 0.829, alpha: 1)), // matground
+                (false, UIColor(red: 0.863, green: 0.792, blue: 0.623, alpha: 1))  // matmountain
+            ],
+            [ // #1: daylight, rain
+                (false, UIColor(red: 0.551, green: 0.702, blue: 0.702, alpha: 1)), // matsea
+                (false, UIColor(red: 0.704, green: 0.688, blue: 0.606, alpha: 1)), // matground
+                (false, UIColor(red: 0.642, green: 0.571, blue: 0.427, alpha: 1))  // matmountain
+            ],
+            [ // #2: daylight, snow
+                (false, UIColor(red: 0.828, green: 0.890, blue: 0.899, alpha: 1)), // matsea
+                (false, UIColor(red: 0.847, green: 0.864, blue: 0.891, alpha: 1)), // matground
+                (false, UIColor(red: 0.907, green: 0.916, blue: 0.946, alpha: 1))  // matmountain
+            ],
+            [ // #3: night, fine
+                (false, UIColor(red: 0.264, green: 0.404, blue: 0.603, alpha: 1)), // matsea
+                (false, UIColor(red: 0.557, green: 0.546, blue: 0.468, alpha: 1)), // matground
+                (false, UIColor(red: 0.534, green: 0.468, blue: 0.337, alpha: 1))  // matmountain
+            ],
+            [ // #4: night, rain
+                (false, UIColor(red: 0.182, green: 0.282, blue: 0.456, alpha: 1)), // matsea
+                (false, UIColor(red: 0.303, green: 0.295, blue: 0.251, alpha: 1)), // matground
+                (false, UIColor(red: 0.273, green: 0.233, blue: 0.172, alpha: 1))  // matmountain
+            ],
+            [ // #5: night, snow
+                (false, UIColor(red: 0.542, green: 0.557, blue: 0.584, alpha: 1)), // matsea
+                (false, UIColor(red: 0.358, green: 0.375, blue: 0.404, alpha: 1)), // matground
+                (false, UIColor(red: 0.329, green: 0.342, blue: 0.371, alpha: 1))  // matmountain
             ]
         ]
     ]

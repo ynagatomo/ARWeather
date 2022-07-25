@@ -72,7 +72,7 @@ struct AppConstant {
                  note: "An island in Japan. It's on the World Natural Heritage List.",
                  color: UIColor(red: 0.016, green: 0.171, blue: 0.752, alpha: 1),
                  symbol: 10,
-                 model: 0, // village
+                 model: 1, // field
                  isHere: false,
                  geolocation: Geolocation(latitude: 30.42965,
                                           longitude: 130.56806,
@@ -85,7 +85,7 @@ struct AppConstant {
                  note: "An island in the southwestern Pacific Ocean.",
                  color: UIColor(red: 0.115, green: 0.315, blue: 0.662, alpha: 1),
                  symbol: 10,
-                 model: 1, // field
+                 model: 3, // island
                  isHere: false,
                  geolocation: Geolocation(latitude: -54.583333,
                                           longitude: 158.883333,
@@ -98,7 +98,7 @@ struct AppConstant {
                  note: "An island in the archipelago of Svalbard, Norway",
                  color: UIColor(red: 0.084, green: 0.339, blue: 0.596, alpha: 1),
                  symbol: 10,
-                 model: 1, // field
+                 model: 3, // island
                  isHere: false,
                  geolocation: Geolocation(latitude: 79.8,
                                           longitude: 22.4,
@@ -111,7 +111,7 @@ struct AppConstant {
                  note: "An observation base on East Ongul Island in Antarctica.",
                  color: UIColor(red: 0.7, green: 0.7, blue: 0.8, alpha: 1),
                  symbol: 10,
-                 model: 1, // field
+                 model: 3, // island
                  isHere: false,
                  geolocation: Geolocation(latitude: -69.006958,
                                           longitude: 39.583744,
