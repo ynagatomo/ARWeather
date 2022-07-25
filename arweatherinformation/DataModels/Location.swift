@@ -48,7 +48,7 @@ struct Location: Codable, Identifiable {
     let note: String
     let color: UIColor
     let symbol: Int      // location symbol index
-    let model: Int      // 3d model index (not used, reserved)
+    let model: Int      // 3d model index (0: village, 1: field, 2: town)
     let isHere: Bool    // true: current location
     let geolocation: Geolocation?   // registered location
     let weather: WeatherState
@@ -216,14 +216,15 @@ extension Location {
         )
     }
 
-    func updated(favorite: Bool, name: String, note: String, color: UIColor, symbol: Int) -> Self {
+    // swiftlint:disable function_parameter_count
+    func updated(favorite: Bool, name: String, note: String, color: UIColor, symbol: Int, model: Int) -> Self {
         return Location(id: self.id,
                         favorite: favorite,
                         name: name,
                         note: note,
                         color: color,
                         symbol: symbol,
-                        model: self.model, // model is not modified for now
+                        model: model,
                         isHere: self.isHere,
                         geolocation: self.geolocation,
                         weather: self.weather,

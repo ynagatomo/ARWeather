@@ -8,6 +8,7 @@
 import UIKit
 
 struct TerrainModelSpec {
+    let name: String                    // name (English only)
     let filename: String                // USDZ file name without ext
     let stageRadius: Float              // [m]
     let cloudsPosition: SIMD3<Float>    // clouds' Y position [m]
@@ -17,6 +18,7 @@ struct TerrainModelSpec {
     }
 }
 
+// swiftlint:disable type_body_length
 struct StageModelSpec {
     static let baseFilename = "base"    // base usdz file name wo ext
     static let cloudFilename = "cloud"   // cloud usdz file name wo ext
@@ -34,15 +36,18 @@ struct StageModelSpec {
     static let rainWindSpeedMin: Double = 10 // [km/h]
 
     static let terrainModelSpecs = [
-        TerrainModelSpec(filename: "village", // terrain usdz file name wo ext
+        TerrainModelSpec(name: "Village",
+                         filename: "village", // terrain usdz file name wo ext
                          stageRadius: 0.15,  // [m]
                          cloudsPosition: SIMD3<Float>(0, 0.1, 0), // clouds' Y position
                          cloudNumberXZ: (x: 5, z: 7)), // number of cloud on X/Z axis
-        TerrainModelSpec(filename: "field", // terrain usdz file name wo ext
+        TerrainModelSpec(name: "Field",
+                         filename: "field", // terrain usdz file name wo ext
                          stageRadius: 0.15,  // [m]
                          cloudsPosition: SIMD3<Float>(0, 0.1, 0), // clouds' Y position
                          cloudNumberXZ: (x: 5, z: 7)), // number of cloud on X/Z axis
-        TerrainModelSpec(filename: "town", // terrain usdz file name wo ext
+        TerrainModelSpec(name: "Town",
+                         filename: "town", // terrain usdz file name wo ext
                          stageRadius: 0.15,  // [m]
                          cloudsPosition: SIMD3<Float>(0, 0.1, 0), // clouds' Y position
                          cloudNumberXZ: (x: 5, z: 7)) // number of cloud on X/Z axis

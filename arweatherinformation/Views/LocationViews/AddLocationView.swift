@@ -23,6 +23,7 @@ struct AddLocationView: View {
     @State private var locationLongitude: Double //  = 0
     @State private var locationBGColor: Color //  = Color.gray
     @State private var locationSymbol: Int //  = 0
+    @State private var locationModelIndex: Int
 
     /// Initializes the view
     /// - Parameters:
@@ -42,6 +43,7 @@ struct AddLocationView: View {
         _locationLongitude = State(initialValue: 0)
         _locationBGColor = State(initialValue: Color.gray)
         _locationSymbol = State(initialValue: 0)
+        _locationModelIndex = State(initialValue: 0)    // #0: village default
 
         if !isNew {
             // editing an existing location
@@ -57,6 +59,7 @@ struct AddLocationView: View {
                     // _locationLongitude = State(initialValue: location.geolocation?.longitude ?? 0)
                     _locationBGColor = State(initialValue: Color(location.color))
                     _locationSymbol = State(initialValue: location.symbol)
+                    _locationModelIndex = State(initialValue: location.model)
                 } else {
                     originalLocation = nil
                     assertionFailure("failed finding the location of id \(locationID)")
@@ -82,7 +85,7 @@ struct AddLocationView: View {
                                        note: locationNote,
                                        color: UIColor(locationBGColor),
                                        symbol: locationSymbol,
-                                       model: 0,  // 3d model index
+                                       model: locationModelIndex,
                                        isHere: false,
                                        geolocation: Geolocation(latitude: locationLatitude,
                                                                 longitude: locationLongitude,
@@ -97,7 +100,8 @@ struct AddLocationView: View {
                     name: locationName,
                     note: locationNote,
                     color: UIColor(locationBGColor),
-                    symbol: locationSymbol)
+                    symbol: locationSymbol,
+                    model: locationModelIndex)
                 appStateController.replaceLocation(ofID: originalLocation.id,
                                                    with: editedLocation)
             } else {
@@ -152,7 +156,14 @@ struct AddLocationView: View {
                         ForEach(0 ..< AppConstant.locationSymbols.count, id: \.self) {
                             Image(systemName: AppConstant.locationSymbols[$0])
                         }
-                    }, label: { Text("addview_location_symbol", comment: "AddView: picker") })
+                    }, label: { Text("addview_location_symbol", comment: "AddView: picker symbols") })
+                } // Section
+                Section(header: Text("section_3dmodel", comment: "AddView: section")) {
+                    Picker(selection: $locationModelIndex, content: {
+                        ForEach(0 ..< StageModelSpec.terrainModelSpecs.count, id: \.self) {
+                            Text(StageModelSpec.terrainModelSpecs[$0].name)
+                        }
+                    }, label: { Text("addview_picker_3dmodel", comment: "AddView: picker 3dmodels") })
                 } // Section
                 Section(header: Text("section_place", comment: "AddView: section")) {
                     HStack {
@@ -168,7 +179,7 @@ struct AddLocationView: View {
     }
 
     struct NumberField: View {
-        let title: String
+        let title: LocalizedStringKey //  String
         @Binding var value: Double
         private let numberFormatter: NumberFormatter = {
             var formatter = NumberFormatter()

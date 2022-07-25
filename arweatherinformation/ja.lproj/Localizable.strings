@@ -1,0 +1,141 @@
+/* No comment provided by engineer. */
+"about_btn_close" = "閉じる";
+
+/* No comment provided by engineer. */
+"addview_background_color" = "背景色";
+
+/* No comment provided by engineer. */
+"addview_btn_cancel" = "キャンセル";
+
+/* No comment provided by engineer. */
+"addview_btn_current_location" = "現在位置";
+
+/* No comment provided by engineer. */
+"addview_btn_save" = "保存";
+
+/* No comment provided by engineer. */
+"addview_latitude" = "緯度";
+
+/* AddView: picker symbols */
+"addview_location_symbol" = "シンボルマーク";
+
+/* No comment provided by engineer. */
+"addview_longitude" = "経度";
+
+/* No comment provided by engineer. */
+"addview_name" = "名前";
+
+/* No comment provided by engineer. */
+"addview_note" = "ノート";
+
+/* AddView: picker 3dmodels */
+"addview_picker_3dmodel" = "3Dモデル";
+
+/* No comment provided by engineer. */
+"addview_toggle_favorite" = "お気に入り";
+
+/* No comment provided by engineer. */
+"ar guidance" = "AR 体験";
+
+/* No comment provided by engineer. */
+"ar guidance message" = "AR 体験中は周囲の安全に注意してください．また、バッテリー消耗や発熱を抑えるために 5 分程度を目安にして下さい．";
+
+/* No comment provided by engineer. */
+"btn_cancel_the_forecast_data_request" = "データ取得をキャンセル";
+
+/* Camera Alert message */
+"cameraAlert_not_permitted" = "カメラ使用が許可されていません．設定アプリで許可して下さい．";
+
+/* No comment provided by engineer. */
+"display in ar" = "AR 表示";
+
+/* No comment provided by engineer. */
+"do not show again" = "再度表示しない";
+
+/* No comment provided by engineer. */
+"edit" = "編集";
+
+/* ForecastView: label */
+"forecastView_daily_forecast" = "日毎の予報";
+
+/* ForecastView: label */
+"forecastView_hourly_forecast" = "時間毎の予報";
+
+/* ForecastView: text */
+"forecastView_select_a_location" = "場所を選んでください．";
+
+/* Developer Web URL */
+"https://www.atarayosd.com/developer.html" = "https://www.atarayosd.com/developer.html";
+
+/* Support Web URL */
+"https://www.atarayosd.com/weather/app.html" = "https://www.atarayosd.com/weather/app_ja.html";
+
+/* Location List: section */
+"list_section_current_location" = "現在地";
+
+/* Location List: section */
+"list_section_favorite" = "お気に入り";
+
+/* Location List: section */
+"list_section_registered_places" = "登録済みの場所";
+
+/* No comment provided by engineer. */
+"navi_title_locations" = "Locations";
+
+/* No comment provided by engineer. */
+"ok" = "Ok";
+
+/* No comment provided by engineer. */
+"onboarding_btn_begin" = "はじめる";
+
+/* Onboarding message */
+"Onboarding_message" = "現在地や世界中のお気に入りの場所の天気予報を見て、拡張現実（AR）で体験しましょう．";
+
+/* Onboarding title */
+"Onboarding_title" = "お気に入りの場所の天気予報を体験";
+
+/* AddView: section */
+"section_3dmodel" = "景色";
+
+/* AddView: section */
+"section_background" = "背景";
+
+/* Settings: section - display */
+"section_display" = "表示";
+
+/* AddView: section */
+"section_location" = "場所";
+
+/* AddView: section */
+"section_name" = "名前";
+
+/* AddView: section */
+"section_place" = "位置";
+
+/* Settings: section - sound */
+"section_sound" = "サウンド";
+
+/* No comment provided by engineer. */
+"settings_btn_done" = "完了";
+
+/* Settings: Title */
+"settings_title" = "設定";
+
+/* No comment provided by engineer. */
+"toggle_display_ar_guidance" = "AR ガイドを表示";
+
+/* No comment provided by engineer. */
+"toggle_display_introduction" = "アプリ紹介を表示";
+
+/* No comment provided by engineer. */
+"toggle_enable_sound" = "サウンド再生";
+
+/* No comment provided by engineer. */
+"toolbar_about" = "アプリについて";
+
+/* No comment provided by engineer. */
+"toolbar_add" = "追加";
+
+/* No comment provided by engineer. */
+"toolbar_settings" = "設定";
+

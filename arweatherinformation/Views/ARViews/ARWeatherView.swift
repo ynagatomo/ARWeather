@@ -122,6 +122,7 @@ struct ARWeatherView: View {
     //    }
 }
 
+#if DEBUG
 struct ARWeatherView_Previews: PreviewProvider {
     static var previews: some View {
         ARWeatherView(name: "Sample",
@@ -129,6 +130,7 @@ struct ARWeatherView_Previews: PreviewProvider {
                       hourlyForecast: SampleForecast.sampleHourlyForecasts)
     }
 }
+#endif
 
 struct ForecastInfoView: View {
     let name: String

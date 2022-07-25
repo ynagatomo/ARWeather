@@ -10,6 +10,8 @@
 		BA0E60AA2856D6BD009D6CAF /* arweatherinformationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0E60A92856D6BD009D6CAF /* arweatherinformationApp.swift */; };
 		BA0E60AE2856D6BE009D6CAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0E60AD2856D6BE009D6CAF /* Assets.xcassets */; };
 		BA0E60B12856D6BE009D6CAF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0E60B02856D6BE009D6CAF /* Preview Assets.xcassets */; };
+		BA1186E3288E3A77008263FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA1186E1288E3A77008263FE /* InfoPlist.strings */; };
+		BA1186E6288E3A77008263FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA1186E4288E3A77008263FE /* Localizable.strings */; };
 		BA1381FE286FDF3B004DE7C7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1381FD286FDF3B004DE7C7 /* LocationManager.swift */; };
 		BA19F3072872E81900500D19 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA19F3062872E81900500D19 /* LocationView.swift */; };
 		BA4C52E72889618B0022EE57 /* cloud.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BA4C52E62889618B0022EE57 /* cloud.usdz */; };
@@ -68,8 +70,12 @@
 		BA0E60B02856D6BE009D6CAF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA0E60B82856D963009D6CAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA0E60B92856DD61009D6CAF /* arweatherinformation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = arweatherinformation.entitlements; sourceTree = "<group>"; };
+		BA1186E2288E3A77008263FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BA1186E5288E3A77008263FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA1381FD286FDF3B004DE7C7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BA19F3062872E81900500D19 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		BA2CAB24288E57C100409E27 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BA2CAB25288E57C100409E27 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA469E22288BFDD300E9BB84 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BA4C52E62889618B0022EE57 /* cloud.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = cloud.usdz; sourceTree = "<group>"; };
 		BA6D10212869804D003E5AB0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -162,6 +168,8 @@
 				BA9CCF3B287E6E8400B92F63 /* SoundAssets */,
 				BA0E60B92856DD61009D6CAF /* arweatherinformation.entitlements */,
 				BA0E60B82856D963009D6CAF /* Info.plist */,
+				BA1186E4288E3A77008263FE /* Localizable.strings */,
+				BA1186E1288E3A77008263FE /* InfoPlist.strings */,
 				BA6D10212869804D003E5AB0 /* Colors.xcassets */,
 				BA0E60AD2856D6BE009D6CAF /* Assets.xcassets */,
 				BA0E60AF2856D6BE009D6CAF /* Preview Content */,
@@ -402,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAD16F09288D07C300CD964F /* base.usdz in Resources */,
+				BA1186E3288E3A77008263FE /* InfoPlist.strings in Resources */,
 				BA6D10222869804D003E5AB0 /* Colors.xcassets in Resources */,
 				BAC21A5A288D51A600471EBD /* field.usdz in Resources */,
 				BA9CCF3F287E747100B92F63 /* scaleup.mp3 in Resources */,
@@ -409,6 +418,7 @@
 				BA9CCF3D287E6EA400B92F63 /* hourflip.m4a in Resources */,
 				BAC21A56288D3F5000471EBD /* village.usdz in Resources */,
 				BA4C52E72889618B0022EE57 /* cloud.usdz in Resources */,
+				BA1186E6288E3A77008263FE /* Localizable.strings in Resources */,
 				BA91AFC9288D5F87000F965F /* town.usdz in Resources */,
 				BA0E60B12856D6BE009D6CAF /* Preview Assets.xcassets in Resources */,
 				BA0E60AE2856D6BE009D6CAF /* Assets.xcassets in Resources */,
@@ -500,6 +510,27 @@
 			targetProxy = BA6D102B286987AC003E5AB0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BA1186E1288E3A77008263FE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA1186E2288E3A77008263FE /* en */,
+				BA2CAB24288E57C100409E27 /* ja */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BA1186E4288E3A77008263FE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA1186E5288E3A77008263FE /* en */,
+				BA2CAB25288E57C100409E27 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BA0E60B22856D6BE009D6CAF /* Debug */ = {

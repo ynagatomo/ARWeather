@@ -40,6 +40,7 @@ struct ARContainerView: UIViewControllerRepresentable {
     }
 }
 
+#if DEBUG
 struct ARContainerView_Previews: PreviewProvider {
     static var previews: some View {
         ARContainerView(hourForecast: SampleForecast.sampleHourlyForecasts[0],
@@ -47,3 +48,4 @@ struct ARContainerView_Previews: PreviewProvider {
         modelIndex: 0)
     }
 }
+#endif

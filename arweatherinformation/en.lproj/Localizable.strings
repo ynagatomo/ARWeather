@@ -1,0 +1,141 @@
+/* No comment provided by engineer. */
+"about_btn_close" = "Close";
+
+/* No comment provided by engineer. */
+"addview_background_color" = "Background Color";
+
+/* No comment provided by engineer. */
+"addview_btn_cancel" = "Cancel";
+
+/* No comment provided by engineer. */
+"addview_btn_current_location" = "Current Location";
+
+/* No comment provided by engineer. */
+"addview_btn_save" = "Save";
+
+/* No comment provided by engineer. */
+"addview_latitude" = "Latitude";
+
+/* AddView: picker symbols */
+"addview_location_symbol" = "Symbol";
+
+/* No comment provided by engineer. */
+"addview_longitude" = "Longitude";
+
+/* No comment provided by engineer. */
+"addview_name" = "Name";
+
+/* No comment provided by engineer. */
+"addview_note" = "Note";
+
+/* AddView: picker 3dmodels */
+"addview_picker_3dmodel" = "3D Model";
+
+/* No comment provided by engineer. */
+"addview_toggle_favorite" = "Favorite";
+
+/* No comment provided by engineer. */
+"ar guidance" = "Use of AR";
+
+/* No comment provided by engineer. */
+"ar guidance message" = "When using AR, please be careful about the safety of your surroundings. To reduce battery consumption and heat generation, the AR display should be within 5 minutes as a guide.";
+
+/* No comment provided by engineer. */
+"btn_cancel_the_forecast_data_request" = "Cancel the request for the weather forecast data.";
+
+/* Camera Alert message */
+"cameraAlert_not_permitted" = "The use of the camera is not permitted. Please allow it in the Settings App.";
+
+/* No comment provided by engineer. */
+"display in ar" = "display with Augmented Reality";
+
+/* No comment provided by engineer. */
+"do not show again" = "Do not show this again.";
+
+/* No comment provided by engineer. */
+"edit" = "Edit";
+
+/* ForecastView: label */
+"forecastView_daily_forecast" = "Daily Forecast";
+
+/* ForecastView: label */
+"forecastView_hourly_forecast" = "Hourly Forecast";
+
+/* ForecastView: text */
+"forecastView_select_a_location" = "Select a location.";
+
+/* Developer Web URL */
+"https://www.atarayosd.com/developer.html" = "https://www.atarayosd.com/developer.html";
+
+/* Support Web URL */
+"https://www.atarayosd.com/weather/app.html" = "https://www.atarayosd.com/weather/app.html";
+
+/* Location List: section */
+"list_section_current_location" = "Current Location";
+
+/* Location List: section */
+"list_section_favorite" = "Favorite Locations";
+
+/* Location List: section */
+"list_section_registered_places" = "Locations";
+
+/* No comment provided by engineer. */
+"navi_title_locations" = "Locations";
+
+/* No comment provided by engineer. */
+"ok" = "Ok";
+
+/* No comment provided by engineer. */
+"onboarding_btn_begin" = "Begin";
+
+/* Onboarding message */
+"Onboarding_message" = "You can see and experience the weather forecasts of your favorite places around the world, with Augmented Reality.";
+
+/* Onboarding title */
+"Onboarding_title" = "Experience the weather forecast for your favorite places.";
+
+/* AddView: section */
+"section_3dmodel" = "Scenery";
+
+/* AddView: section */
+"section_background" = "Background";
+
+/* Settings: section - display */
+"section_display" = "Display";
+
+/* AddView: section */
+"section_location" = "Location";
+
+/* AddView: section */
+"section_name" = "Name";
+
+/* AddView: section */
+"section_place" = "Place";
+
+/* Settings: section - sound */
+"section_sound" = "Sound";
+
+/* No comment provided by engineer. */
+"settings_btn_done" = "Done";
+
+/* Settings: Title */
+"settings_title" = "Settings";
+
+/* No comment provided by engineer. */
+"toggle_display_ar_guidance" = "Display AR guide";
+
+/* No comment provided by engineer. */
+"toggle_display_introduction" = "Display Introduction";
+
+/* No comment provided by engineer. */
+"toggle_enable_sound" = "Enable Sound";
+
+/* No comment provided by engineer. */
+"toolbar_about" = "About";
+
+/* No comment provided by engineer. */
+"toolbar_add" = "Add";
+
+/* No comment provided by engineer. */
+"toolbar_settings" = "Settings";
+

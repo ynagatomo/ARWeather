@@ -1,0 +1,9 @@
+/* Bundle display name */
+"CFBundleDisplayName" = "AR Weather LS";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "このアプリは AR 表示のためにカメラを使います．";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "このアプリはあなたの位置に合わせた天気予報を表示するために位置情報を使います．";
+

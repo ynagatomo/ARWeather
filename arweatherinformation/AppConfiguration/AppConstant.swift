@@ -22,6 +22,19 @@ struct AppConstant {
     static let displayingARGGuidance = "displayingARGGuidance" // @AppStorage
     static let soundEnable = "soundEnable" // @AppStorage
 
+    // URLs
+
+    // App Review URL: English only
+    static let reviewURLString = "https://apps.apple.com/app/id1636107272?action=write-review"
+    // Twitter URL: English only
+    static let twitterURLString = "https://twitter.com/weatherarapp"
+    // Support URL: localized
+    static let supportURLString = NSLocalizedString("https://www.atarayosd.com/weather/app.html",
+                          comment: "Support Web URL")
+    // Developer URL: localized
+    static let developerURLString = NSLocalizedString("https://www.atarayosd.com/developer.html",
+                          comment: "Developer Web URL")
+
     // Attributes
 
     static let twitterName = "@weatherarapp"

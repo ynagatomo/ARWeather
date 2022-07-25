@@ -27,13 +27,13 @@ struct AboutView: View {
             Divider()
 
             Link(String("App Review"),  // English only
-                 destination: URL(string: "https://apps.apple.com/app/id1636107272")!).padding(1)
+                 destination: URL(string: AppConstant.reviewURLString)!).padding(1)
             Link(String("Twitter @weatherarapp"), // English only
-                 destination: URL(string: "https://twitter.com/weatherarapp")!).padding(1)
+                 destination: URL(string: AppConstant.twitterURLString)!).padding(1)
             Link(String("Support Web"), // English only
-                 destination: URL(string: "https://www.atarayosd.com/weather/app.html")!).padding(1)
+                 destination: URL(string: AppConstant.supportURLString)!).padding(1)
             Link(String("Developer Web"), // English only
-                 destination: URL(string: "https://www.atarayosd.com/")!).padding(1)
+                 destination: URL(string: AppConstant.developerURLString)!).padding(1)
             Spacer()
         } // VStack
         .fontWeight(.thin)
