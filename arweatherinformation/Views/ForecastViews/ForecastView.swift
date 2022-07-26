@@ -186,7 +186,7 @@ struct ForecastView: View {
         }
         .fullScreenCover(isPresented: $showingAR) {
             ARWeatherView(name: location?.name ?? "",
-                          modelIndex: location?.model ?? 3, // #0: village, #2: town, #3: island
+                          modelIndex: location?.model ?? 2, // #0: village, #2: town, #3: island
                           hourlyForecast: hourlyForecast())
         }
     } // body

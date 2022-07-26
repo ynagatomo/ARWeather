@@ -68,7 +68,7 @@ struct DailyForecastColumnView: View {
                         Spacer()
                         Text(forecast.precipitationChance.formatted(.percent))
                             .font(.title)
-                            .foregroundColor(Color("RainTextColor"))
+                            .foregroundColor(Color.blue) // Color("RainTextColor"))
                         Spacer()
                     } // HStack
                 } // Group
@@ -107,14 +107,16 @@ struct DailyForecastColumnView: View {
                     // <rainfall amount>
                     HStack {
                         Image(systemName: "cloud.rain")
+                            .foregroundColor(Color.blue)
                         Text(forecast.rainfallAmount.description)
-                            .foregroundColor(Color("RainTextColor"))
+                            // .foregroundColor(Color.blue) // Color("RainTextColor"))
                     }
                     // <snowfall amount>
                     HStack {
                         Image(systemName: "snowflake")
+                            .foregroundColor(Color.white)
                         Text(forecast.snowfallAmount.description)
-                            .foregroundColor(Color("RainTextColor"))
+                            // .foregroundColor(Color.white) // Color("RainTextColor"))
                     }
                     // <wind>
                     HStack {

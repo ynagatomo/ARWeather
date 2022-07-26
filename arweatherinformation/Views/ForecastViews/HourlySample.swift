@@ -110,7 +110,8 @@ struct HourlySampleColumnView: View {
                         Spacer()
                         Text(forecast.precipitationChance.formatted(.percent)) // %
                             .font(.title3)
-                            .foregroundColor(Color("RainTextColor"))
+                            .foregroundColor(Color.blue) // Color("RainTextColor"))
+//                            .bold()
                         Spacer()
                     }
 

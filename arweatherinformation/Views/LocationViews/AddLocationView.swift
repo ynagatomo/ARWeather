@@ -16,6 +16,9 @@ struct AddLocationView: View {
     private let isCurrentLocation: Bool  // true: current location
     private let originalLocation: Location? // not nil: when editing an existing location
 
+    @FocusState private var isLatitudeFocused: Bool
+    @FocusState private var isLongitudeFocused: Bool
+
     @State private var locationFavorite: Bool
     @State private var locationName: String //  = "hello"
     @State private var locationNote: String
@@ -131,14 +134,24 @@ struct AddLocationView: View {
                     Section(header: Text("section_location", comment: "AddView: section")) {
                         NumberField(title: "addview_latitude",
                                     value: $locationLatitude)
+                        .focused($isLatitudeFocused)
                         .onSubmit {
                             validateLatitude()
                         }
+                        .onChange(of: isLatitudeFocused) { value in
+                            debugLog("DEBUG: A. Latitude Textfield focus -> \(value)")
+                        }
+
                         NumberField(title: "addview_longitude",
                                     value: $locationLongitude)
+                        .focused($isLongitudeFocused)
                         .onSubmit {
                             validateLongitude()
                         }
+                        .onChange(of: isLongitudeFocused) { value in
+                            debugLog("DEBUG: B. Longitude Textfield focus -> \(value)")
+                        }
+
                         HStack {
                             Spacer()
                             Button("addview_btn_current_location", action: {
@@ -146,7 +159,11 @@ struct AddLocationView: View {
                                     locationLatitude = deviceLocation.latitude
                                     locationLongitude = deviceLocation.longitude
                                 }
-                            }).disabled(appStateController.currentDeviceLocation() == nil)
+                            })
+                            // when the NumberFields have a focus, the value can not be set.
+                            // so during they have a focus, disable this button.
+                            .disabled(appStateController.currentDeviceLocation() == nil
+                            || isLatitudeFocused || isLongitudeFocused)
                         }
                     } // Section
                 }
