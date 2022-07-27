@@ -105,7 +105,8 @@ struct ForecastView: View {
                                         .padding(.horizontal, 6)
                                     Spacer()
                                 }
-                                .padding()
+                                .padding(.top, 8)
+//                                .padding()
                                 DailyForecastView(dailyForecast: forecast.dailyForecast,
                                                   themeColor: Color(location.color))
 

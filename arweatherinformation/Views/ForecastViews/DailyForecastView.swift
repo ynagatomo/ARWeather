@@ -28,6 +28,17 @@ struct DailyForecastColumnView: View {
     let forecast: DayWeather
     let themeColor: Color
 
+    private var abbreviatedDate: String {
+        forecast.date.formatted(date: .abbreviated, // Oct 17, 2020
+                                time: .omitted)
+    }
+    private var weekday: String {
+        forecast.date.formatted(date: .complete, // Saturday, October 17, 2020
+                                time: .omitted)
+        .components(separatedBy: ",")
+        .first ?? ""  // Saturday
+    }
+
     private func forecastColor(_ chance: Double) -> Color {
         if chance == 0 { return Color("SunnyBGColor") }
         let bright = 1.0 - chance
@@ -41,14 +52,15 @@ struct DailyForecastColumnView: View {
             VStack {
                 Image(systemName: forecast.symbolName)
                     .font(.system(size: 40))
-                Text(forecast.date.formatted(date: .abbreviated,
-                                             time: .omitted))
+                Text(weekday)
+//                Text(forecast.date.formatted(date: .abbreviated,
+//                                             time: .omitted))
             }
             .background(in: Circle().inset(by: -20))
             .backgroundStyle(forecastColor(forecast.precipitationChance).gradient)
             .backgroundStyle(.white)
             .frame(height: 60)
-            .padding(20)
+//            .padding(20)
             .offset(x: 0, y: 30)
 
             VStack(alignment: .leading) {
@@ -62,7 +74,8 @@ struct DailyForecastColumnView: View {
                         Spacer()
                     } // HStack
                     .font(.title)
-                    .padding(.top, 8)
+                    .padding(.top, 24)
+//                    .padding(.top, 8)
 
                     HStack {
                         Spacer()
@@ -74,8 +87,9 @@ struct DailyForecastColumnView: View {
                 } // Group
 
                 // date
-                Text(forecast.date.formatted(date: .complete, // .abbreviated,
-                                             time: .omitted))
+                Text(abbreviatedDate)
+//                Text(forecast.date.formatted(date: .complete, // .abbreviated,
+//                                             time: .omitted))
                 .padding(8)
 
                 // <condition>

@@ -48,7 +48,7 @@ struct HourlyForecastColumnView: View {
             .backgroundStyle(forecastColor(forecast.precipitationChance).gradient)
             .backgroundStyle(.white)
             .frame(height: 60)
-            .padding(20)
+//            .padding(20)
             .offset(x: 0, y: 30)
 
             VStack(alignment: .leading) {
@@ -61,7 +61,8 @@ struct HourlyForecastColumnView: View {
                             .accessibilityLabel(forecast.temperature.description)
                         Spacer()
                     } // HStack
-                    .padding(.top, 8)
+                    .padding(.top, 24)
+//                    .padding(.top, 8)
 
                     HStack {
                         Spacer()
