@@ -23,7 +23,9 @@ struct AddLocationView: View {
     @State private var locationName: String //  = "hello"
     @State private var locationNote: String
     @State private var locationLatitude: Double //  = 0
+    @State private var locationLatitudeString: String
     @State private var locationLongitude: Double //  = 0
+    @State private var locationLongitudeString: String
     @State private var locationBGColor: Color //  = Color.gray
     @State private var locationSymbol: Int //  = 0
     @State private var locationModelIndex: Int
@@ -43,7 +45,9 @@ struct AddLocationView: View {
         _locationName = State(initialValue: "")
         _locationNote = State(initialValue: "")
         _locationLatitude = State(initialValue: 0)
+        _locationLatitudeString = State(initialValue: "")
         _locationLongitude = State(initialValue: 0)
+        _locationLongitudeString = State(initialValue: "")
         _locationBGColor = State(initialValue: Color.gray)
         _locationSymbol = State(initialValue: 0)
         _locationModelIndex = State(initialValue: 0)    // #0: village default
@@ -80,6 +84,9 @@ struct AddLocationView: View {
     }
 
     private func saveLocation() {
+//        validateLatitude()
+//        validateLongitude()
+//        debugLog("DEBUG: Add View: Save \(locationLatitude), \(locationLongitude)")
         if isNew {
             // add a new location
             let newLocation = Location(id: UUID(),
@@ -132,39 +139,63 @@ struct AddLocationView: View {
                 } // Section
                 if isNew {
                     Section(header: Text("section_location", comment: "AddView: section")) {
-                        NumberField(title: "addview_latitude",
-                                    value: $locationLatitude)
-                        .focused($isLatitudeFocused)
-                        .onSubmit {
-                            validateLatitude()
-                        }
-                        .onChange(of: isLatitudeFocused) { value in
-                            debugLog("DEBUG: A. Latitude Textfield focus -> \(value)")
-                        }
-
-                        NumberField(title: "addview_longitude",
-                                    value: $locationLongitude)
-                        .focused($isLongitudeFocused)
-                        .onSubmit {
-                            validateLongitude()
-                        }
-                        .onChange(of: isLongitudeFocused) { value in
-                            debugLog("DEBUG: B. Longitude Textfield focus -> \(value)")
-                        }
-
-                        HStack {
-                            Spacer()
-                            Button("addview_btn_current_location", action: {
-                                if let deviceLocation = appStateController.currentDeviceLocation() {
-                                    locationLatitude = deviceLocation.latitude
-                                    locationLongitude = deviceLocation.longitude
+                        TextField("addview_latitude", text: $locationLatitudeString)
+                            .keyboardType(.numbersAndPunctuation)
+                            .focused($isLatitudeFocused)
+                            .onChange(of: isLatitudeFocused) { focused in
+                                debugLog("DEBUG: A. Latitude Textfield focus -> \(focused)")
+                                if !focused {
+                                    locationLatitude = Double(locationLatitudeString) ?? 0
+                                    validateLatitude()
+                                    locationLatitudeString = String(locationLatitude)
                                 }
-                            })
-                            // when the NumberFields have a focus, the value can not be set.
-                            // so during they have a focus, disable this button.
-                            .disabled(appStateController.currentDeviceLocation() == nil
-                            || isLatitudeFocused || isLongitudeFocused)
-                        }
+                            }
+                            // When hitting Enter, onSubmit is processed.
+                            // When moving without Enter, onSubmit is not processed.
+                            //    .onSubmit {
+                            //        locationLatitude = Double(locationLatitudeString) ?? 0
+                            //        validateLatitude()
+                            //        locationLatitudeString = String(locationLatitude)
+                            //    }
+                        //    NumberField(title: "addview_latitude",
+                        //                value: $locationLatitude)
+
+                        TextField("addview_longitude", text: $locationLongitudeString)
+                            .keyboardType(.numbersAndPunctuation)
+                            .focused($isLongitudeFocused)
+                            .onChange(of: isLongitudeFocused) { focused in
+                                debugLog("DEBUG: B. Longitude Textfield focus -> \(focused)")
+                                if !focused {
+                                    locationLongitude = Double(locationLongitudeString) ?? 0
+                                    validateLongitude()
+                                    locationLongitudeString = String(locationLongitude)
+                                }
+                            }
+                            //    .onSubmit {
+                            //        locationLongitude = Double(locationLongitudeString) ?? 0
+                            //        validateLongitude()
+                            //        locationLongitudeString = String(locationLongitude)
+                            //    }
+                        //    NumberField(title: "addview_longitude",
+                        //                value: $locationLongitude)
+
+                        Button("addview_btn_current_location", action: {
+                            if let deviceLocation = appStateController.currentDeviceLocation() {
+                                locationLatitude = deviceLocation.latitude
+                                locationLatitudeString = String(locationLatitude)
+                                locationLongitude = deviceLocation.longitude
+                                locationLongitudeString = String(locationLongitude)
+                            }
+                        })
+                        // when the NumberFields have a focus, the value can not be set.
+                        // so during they have a focus, disable this button.
+                        .disabled(appStateController.currentDeviceLocation() == nil
+                        || isLatitudeFocused || isLongitudeFocused)
+
+                        //    Button("addview_btn_keyboardclose", action: {
+                        //        isLatitudeFocused = false
+                        //        isLongitudeFocused = false
+                        //    })
                     } // Section
                 }
                 Section(header: Text("section_background", comment: "AddView: section")) {
@@ -193,7 +224,7 @@ struct AddLocationView: View {
             } // List
         } // VStack
         .padding(20)
-    }
+    } // body
 
     struct NumberField: View {
         let title: LocalizedStringKey //  String

@@ -658,7 +658,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = arweatherinformation/arweatherinformation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"arweatherinformation/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
 				ENABLE_PREVIEWS = YES;
@@ -694,7 +694,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = arweatherinformation/arweatherinformation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"arweatherinformation/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
 				ENABLE_PREVIEWS = YES;
