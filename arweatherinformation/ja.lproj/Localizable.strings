@@ -14,13 +14,13 @@
 "addview_btn_save" = "保存";
 
 /* No comment provided by engineer. */
-"addview_latitude" = "緯度";
+"addview_latitude" = "緯度 -90.0...90.0";
 
 /* AddView: picker symbols */
 "addview_location_symbol" = "シンボルマーク";
 
 /* No comment provided by engineer. */
-"addview_longitude" = "経度";
+"addview_longitude" = "経度 -180.0...180.0";
 
 /* No comment provided by engineer. */
 "addview_name" = "名前";

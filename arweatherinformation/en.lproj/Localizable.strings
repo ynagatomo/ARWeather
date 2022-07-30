@@ -14,13 +14,13 @@
 "addview_btn_save" = "Save";
 
 /* No comment provided by engineer. */
-"addview_latitude" = "Latitude";
+"addview_latitude" = "Latitude -90.0...90.0";
 
 /* AddView: picker symbols */
 "addview_location_symbol" = "Symbol";
 
 /* No comment provided by engineer. */
-"addview_longitude" = "Longitude";
+"addview_longitude" = "Longitude -180.0...180.0";
 
 /* No comment provided by engineer. */
 "addview_name" = "Name";

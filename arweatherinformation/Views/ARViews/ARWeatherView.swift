@@ -22,6 +22,7 @@ struct ARWeatherView: View {
         ARContainerView(hourForecast: hourlyForecast[hourIndex],
                         scale: scale,
                         modelIndex: modelIndex)
+            // .ignoresSafeArea()
             .overlay {
                 VStack {
                     HStack(alignment: .top) {
@@ -35,7 +36,8 @@ struct ARWeatherView: View {
                                          forecast: hourlyForecast[hourIndex],
                                          position: (hourIndex, hourlyForecast.count))
                             .padding(.top, 8)
-                        Spacer()
+                            .padding(.trailing, 8)
+                        // Spacer()
                         // Close [X]
                         Button(action: dismiss.callAsFunction) {
                             Image(systemName: "xmark.circle")
