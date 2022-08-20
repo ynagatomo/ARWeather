@@ -136,23 +136,23 @@ extension ARScene {
         let position = stagePosition()
         baseEntity?.position = position
 
-//        if state != .notAvailable {
-//            // AR-camera's tracking state is .limited or .normal
-//            let posAndScale = StageModelSpec.stagePositionAndScale(modelIndex: modelIndex,
-//                                                                   scaleIndex: scaleIndex)
-//            let position = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
-//                                + arView.cameraTransform.translation
-//                                + posAndScale.position
-//
-//            debugLog("AR: AR Camera Tracking State was changed to .limited or .normal.")
-//            debugLog("AR:    - camera rotation = \(arView.cameraTransform.rotation)")
-//            debugLog("AR:    - camera position = \(arView.cameraTransform.translation)")
-//            debugLog("AR:    - modified stage position = \(position)")
-//            // change the base-entity position
-//            baseEntity?.position = position
-//        } else {
-//            // do nothing
-//        }
+        //        if state != .notAvailable {
+        //            // AR-camera's tracking state is .limited or .normal
+        //            let posAndScale = StageModelSpec.stagePositionAndScale(modelIndex: modelIndex,
+        //                                                                   scaleIndex: scaleIndex)
+        //            let position = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
+        //                                + arView.cameraTransform.translation
+        //                                + posAndScale.position
+        //
+        //            debugLog("AR: AR Camera Tracking State was changed to .limited or .normal.")
+        //            debugLog("AR:    - camera rotation = \(arView.cameraTransform.rotation)")
+        //            debugLog("AR:    - camera position = \(arView.cameraTransform.translation)")
+        //            debugLog("AR:    - modified stage position = \(position)")
+        //            // change the base-entity position
+        //            baseEntity?.position = position
+        //        } else {
+        //            // do nothing
+        //        }
     }
 
     private func stagePosition() -> SIMD3<Float> {
@@ -179,7 +179,7 @@ extension ARScene {
             }
         }
 
-        debugLog("A%: stagePosition() was called.")
+        debugLog("AR: stagePosition() was called.")
         debugLog("AR:  - camera rotation = \(arView.cameraTransform.rotation)")
         debugLog("AR:  - camera position = \(arView.cameraTransform.translation)")
         debugLog("AR:  - calculated stage position = \(stagePosition)")
@@ -209,18 +209,18 @@ extension ARScene {
         let modifiedPosition: SIMD3<Float> = stagePosition()
 
         //        if cameraTrackingState == .notAvailable {
-//            // AR-camera's tracking state is .notAvailable
-//            modifiedPosition = SIMD3<Float>.zero
-//        } else {
-//            // AR-camera's tracking state is .limited or .normal
-//            modifiedPosition = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
-//                                + arView.cameraTransform.translation
-//                                + posAndScale.position
-//        }
-//
-//        debugLog("AR: camera rotation = \(arView.cameraTransform.rotation)")
-//        debugLog("AR: camera position = \(arView.cameraTransform.translation)")
-//        debugLog("AR: modified position = \(modifiedPosition)")
+        //            // AR-camera's tracking state is .notAvailable
+        //            modifiedPosition = SIMD3<Float>.zero
+        //        } else {
+        //            // AR-camera's tracking state is .limited or .normal
+        //            modifiedPosition = simd_act(arView.cameraTransform.rotation, StageModelSpec.stageOrigin)
+        //                                + arView.cameraTransform.translation
+        //                                + posAndScale.position
+        //        }
+        //
+        //        debugLog("AR: camera rotation = \(arView.cameraTransform.rotation)")
+        //        debugLog("AR: camera position = \(arView.cameraTransform.translation)")
+        //        debugLog("AR: modified position = \(modifiedPosition)")
 
         baseEntity?.position = modifiedPosition
         baseEntity?.scale = posAndScale.scale

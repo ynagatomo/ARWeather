@@ -85,7 +85,6 @@ struct ForecastView: View {
                                         .accessibilityHidden(true)
                                     Text("forecastView_hourly_forecast", comment: "ForecastView: label")
                                         .fontWeight(.thin)
-//                                        .foregroundColor(.secondary)
                                         .padding(.horizontal, 6)
                                     Spacer()
                                 } // HStack
@@ -101,12 +100,11 @@ struct ForecastView: View {
                                     Text("forecastView_daily_forecast", comment: "ForecastView: label")
                                         .fontWeight(.thin)
                                         .bold()
-//                                        .foregroundColor(.secondary)
                                         .padding(.horizontal, 6)
                                     Spacer()
                                 }
                                 .padding(.top, 8)
-//                                .padding()
+
                                 DailyForecastView(dailyForecast: forecast.dailyForecast,
                                                   themeColor: Color(location.color))
 

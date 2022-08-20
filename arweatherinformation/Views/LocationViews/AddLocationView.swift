@@ -84,9 +84,6 @@ struct AddLocationView: View {
     }
 
     private func saveLocation() {
-//        validateLatitude()
-//        validateLongitude()
-//        debugLog("DEBUG: Add View: Save \(locationLatitude), \(locationLongitude)")
         if isNew {
             // add a new location
             let newLocation = Location(id: UUID(),
