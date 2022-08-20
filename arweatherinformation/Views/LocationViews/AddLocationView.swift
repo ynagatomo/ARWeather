@@ -62,8 +62,8 @@ struct AddLocationView: View {
                     _locationFavorite = State(initialValue: location.favorite)
                     _locationName = State(initialValue: location.name)
                     _locationNote = State(initialValue: location.note)
-                    // _locationLatitude = State(initialValue: location.geolocation?.latitude ?? 0)
-                    // _locationLongitude = State(initialValue: location.geolocation?.longitude ?? 0)
+                    _locationLatitude = State(initialValue: location.geolocation?.latitude ?? 0)
+                    _locationLongitude = State(initialValue: location.geolocation?.longitude ?? 0)
                     _locationBGColor = State(initialValue: Color(location.color))
                     _locationSymbol = State(initialValue: location.symbol)
                     _locationModelIndex = State(initialValue: location.model)
@@ -130,6 +130,9 @@ struct AddLocationView: View {
                     saveLocation()
                     dismiss.callAsFunction()
                 }).buttonStyle(.borderedProminent)
+                    .disabled(
+                        isNew && (locationLatitudeString == "" || locationLongitudeString == "")
+                    )
             }
             Spacer()
             List {
@@ -137,6 +140,7 @@ struct AddLocationView: View {
                     TextField("addview_name", text: $locationName)
                     TextField("addview_note", text: $locationNote)
                 } // Section
+
                 if isNew {
                     Section(header: Text("section_location", comment: "AddView: section")) {
                         TextField("addview_latitude", text: $locationLatitudeString)
@@ -197,9 +201,31 @@ struct AddLocationView: View {
                         //        isLongitudeFocused = false
                         //    })
                     } // Section
-                }
+                } else {
+                    // editing an existing location
+                    if !isCurrentLocation {
+                        Section(header: Text("section_location", comment: "AddView: section")) {
+                            HStack {
+                                Text("addview_latitude")
+                                Spacer()
+                                Text("\(locationLatitude)")
+                            }
+                            .foregroundColor(.secondary)
+
+                            HStack {
+                                Text("addview_longitude")
+                                Spacer()
+                                Text("\(locationLongitude)")
+                            }
+                            .foregroundColor(.secondary)
+                        } // Section
+                    }
+                } // if isNew
+
                 Section(header: Text("section_background", comment: "AddView: section")) {
                     ColorPicker("addview_background_color", selection: $locationBGColor)
+                        .accessibilityLabel("background color")  // should be localized
+
                     Picker(selection: $locationSymbol, content: {
                         ForEach(0 ..< AppConstant.locationSymbols.count, id: \.self) {
                             Image(systemName: AppConstant.locationSymbols[$0])
@@ -224,6 +250,7 @@ struct AddLocationView: View {
             } // List
         } // VStack
         .padding(20)
+        .interactiveDismissDisabled()
     } // body
 
     struct NumberField: View {

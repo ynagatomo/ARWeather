@@ -30,13 +30,13 @@ struct ForecastView: View {
     }
 
     // These stings are not translated. English only
-    private var stateMessage: String {
-        var message = ""
+    private var stateMessage: LocalizedStringKey { //  String {
+        var message = LocalizedStringKey("")
         if let location {
             switch location.weather {
-            case .none: message = "no weather forecast data"
-            case .error: message = "error occurred"
-            case .updating: message = "requesting weather forecast data ..."
+            case .none: message = "no_weather_forecast_data"
+            case .error: message = "error_occurred"
+            case .updating: message = "requesting_weather_forecast_data"
             default: message = ""
             }
         }
@@ -66,7 +66,7 @@ struct ForecastView: View {
         VStack {
             if let location {
                 ZStack {
-                    LinearGradient(gradient: Gradient(colors: [.clear, Color(location.color), .clear]),
+                    LinearGradient(gradient: Gradient(colors: [Color(location.color), .clear]),
                                    startPoint: .top, endPoint: .trailing)
                     .opacity(0.3)
                     ScrollView(.vertical, showsIndicators: false) {
@@ -85,7 +85,7 @@ struct ForecastView: View {
                                         .accessibilityHidden(true)
                                     Text("forecastView_hourly_forecast", comment: "ForecastView: label")
                                         .fontWeight(.thin)
-                                        .foregroundColor(.secondary)
+//                                        .foregroundColor(.secondary)
                                         .padding(.horizontal, 6)
                                     Spacer()
                                 } // HStack
@@ -101,7 +101,7 @@ struct ForecastView: View {
                                     Text("forecastView_daily_forecast", comment: "ForecastView: label")
                                         .fontWeight(.thin)
                                         .bold()
-                                        .foregroundColor(.secondary)
+//                                        .foregroundColor(.secondary)
                                         .padding(.horizontal, 6)
                                     Spacer()
                                 }
@@ -158,24 +158,23 @@ struct ForecastView: View {
                         Button(action: { showingEdit = true }, label: {
                             Image(systemName: "square.and.pencil")
                         })
-                        .accessibilityLabel("edit")
+                        .accessibilityLabel("edit") // should be localized
 
                         Button(action: { showingAR = true }, label: {
                             Image(systemName: "arkit")
                         })
                         .buttonStyle(.borderedProminent)
-                        .accessibilityLabel("display in ar")
+                        .accessibilityLabel("display in ar") // should be localized
                         .disabled(!forecastAvailable)
                     }
                 }
             } else {
                 VStack {
                     Text("forecastView_select_a_location", comment: "ForecastView: text")
-                    // TODO: remove comment
-                    // #if DEBUG
+                    #if DEBUG   // --------------------------------
                     Button("test AR", action: { showingAR = true })
                         .padding()
-                    // #endif
+                    #endif      // --------------------------------
                 }
             } // if-else
         } // VStack
@@ -202,10 +201,9 @@ struct ForecastView: View {
         } else {
             // do nothing in release mode because this won't happen
 
-            // TODO: remove comment
-            // #if DEBUG
+            #if DEBUG   // -----------------------------------------
             forecasts = SampleForecast.sampleHourlyForecasts
-            // #endif
+            #endif      // -----------------------------------------
         }
         return forecasts
     }

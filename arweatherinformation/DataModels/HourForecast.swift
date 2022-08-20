@@ -78,8 +78,7 @@ struct HourForecast {
     }
 }
 
-// TODO: remove comment
-// #if DEBUG
+#if DEBUG   // --------------------------------------------------------------
 struct SampleForecast {
     static let sampleHourlyForecasts: [HourForecast] = [
         HourForecast(dateDescription: "8:00", // #0
@@ -204,4 +203,4 @@ struct SampleForecast {
                      windDirectionDescription: "300.0 °")
     ]
 }
-// #endif
+#endif  // ---------------------------------------------------------------------------------

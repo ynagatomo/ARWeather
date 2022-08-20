@@ -5,7 +5,6 @@
 //  Created by Yasuhito Nagatomo on 2022/06/27.
 //
 
-#if DEBUG
 import Foundation
 
 struct DevConstant {
@@ -20,6 +19,7 @@ struct DevConstant {
     static let isThrowingWeatherError = false
 }
 
+#if DEBUG
 final class DevConfiguration {
     static let share = DevConfiguration()
     private init() {}

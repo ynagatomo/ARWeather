@@ -40,6 +40,9 @@
 /* No comment provided by engineer. */
 "ar guidance message" = "AR 体験中は周囲の安全に注意してください．また、バッテリー消耗や発熱を抑えるために 5 分程度を目安にして下さい．";
 
+/* accessibility label */
+"background color" = "背景色";
+
 /* No comment provided by engineer. */
 "btn_cancel_the_forecast_data_request" = "データ取得をキャンセル";
 
@@ -54,6 +57,8 @@
 
 /* No comment provided by engineer. */
 "edit" = "編集";
+
+"error_occurred" = "データ取得に失敗しました．";
 
 /* ForecastView: label */
 "forecastView_daily_forecast" = "日毎の予報";
@@ -82,6 +87,8 @@
 /* No comment provided by engineer. */
 "navi_title_locations" = "Locations";
 
+"no_weather_forecast_data" = "天気予報データがありません．";
+
 /* No comment provided by engineer. */
 "ok" = "Ok";
 
@@ -93,6 +100,8 @@
 
 /* Onboarding title */
 "Onboarding_title" = "お気に入りの場所の天気予報を体験";
+
+"requesting_weather_forecast_data" = "天気予報データ要求中...";
 
 /* AddView: section */
 "section_3dmodel" = "景色";

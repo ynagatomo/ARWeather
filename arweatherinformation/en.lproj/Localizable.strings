@@ -43,6 +43,9 @@
 /* No comment provided by engineer. */
 "btn_cancel_the_forecast_data_request" = "Cancel the request for the weather forecast data.";
 
+/* accessibility label */
+"background color" = "background color";
+
 /* Camera Alert message */
 "cameraAlert_not_permitted" = "The use of the camera is not permitted. Please allow it in the Settings App.";
 
@@ -54,6 +57,8 @@
 
 /* No comment provided by engineer. */
 "edit" = "Edit";
+
+"error_occurred" = "Failed to received data.";
 
 /* ForecastView: label */
 "forecastView_daily_forecast" = "Daily Forecast";
@@ -82,8 +87,10 @@
 /* No comment provided by engineer. */
 "navi_title_locations" = "Locations";
 
+"no_weather_forecast_data" = "no weather forecast data";
+
 /* No comment provided by engineer. */
-"ok" = "Ok";
+"ok" = "OK";
 
 /* No comment provided by engineer. */
 "onboarding_btn_begin" = "Begin";
@@ -93,6 +100,8 @@
 
 /* Onboarding title */
 "Onboarding_title" = "Experience the weather forecast for your favorite places.";
+
+"requesting_weather_forecast_data" = "requesting the weather forecast data ...";
 
 /* AddView: section */
 "section_3dmodel" = "Scenery";
