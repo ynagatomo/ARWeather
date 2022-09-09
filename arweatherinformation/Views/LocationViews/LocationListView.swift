@@ -57,10 +57,15 @@ struct LocationListView: View {
             }
             .onChange(of: selectedLocation) { newValue in
                 debugLog("APP: selectedLocation was changed.")
+                debugLog("APP: - newValue.name = \(newValue?.name ?? "nil")")
+                debugLog("APP: - newValue.task == nil ? \(newValue?.task == nil)")
                 if let newValue, newValue.task == nil {
                     let task = Task.detached(priority: .userInitiated) {
+                        debugLog("APP: - CheckWeather() will start with a Task.")
                         await appStateController.checkWeather(for: newValue.id)
+                        debugLog("App: - CheckWeather() finished.")
                         await appStateController.setTask(nil, toID: newValue.id)
+                        debugLog("App: - setTask(nil) was called.")
                     }
                     appStateController.setTask(task, toID: newValue.id)
                 } else {

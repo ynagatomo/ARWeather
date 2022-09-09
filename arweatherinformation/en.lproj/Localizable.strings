@@ -58,7 +58,7 @@
 /* No comment provided by engineer. */
 "edit" = "Edit";
 
-"error_occurred" = "Failed to received data.";
+"error_occurred" = "Failed to receiv data.";
 
 /* ForecastView: label */
 "forecastView_daily_forecast" = "Daily Forecast";

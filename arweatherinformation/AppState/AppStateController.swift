@@ -86,7 +86,7 @@ final class AppStateController: ObservableObject {
             assert(!(task != nil && location.task != nil))
             let newLocation = location.updateTask(task)
             replaceLocation(ofID: locationID, with: newLocation)
-            debugLog("DEBUG: the new task (or nil) was stored into the location.task.")
+            debugLog("APP: the new task (or nil) was stored into the location.task.")
         } else {
             assertionFailure("failed to find the location of ID \(locationID).")
             // do nothing in release mode
@@ -259,6 +259,7 @@ extension AppStateController {
                 if !location.isHere {
                     // The current weather data is available for registered place.
                     // keep using it. So just return.
+                    debugLog("WK: - The current weather data will be used for the registered place.")
                     return
                 } else { // Here
                     // check the distance from weather data's location to current location
@@ -267,6 +268,8 @@ extension AppStateController {
                     if distance < AppConstant.weatherDataDistanceLimit { // [meters]
                         // The current weather data is not expired and its location is near here.
                         // Keep using it. So just return.
+                        // swiftlint:disable line_length
+                        debugLog("WK: - The current weather data for `Here` is available and distance is less then 3km. It will be used.")
                         return
                     } else {
                         // The distance is far. need to update the data.
@@ -298,7 +301,9 @@ extension AppStateController {
                 throw WeatherError.unknown
             }
             #endif
+            debugLog("WK: WeatherService.weather(for:) will start.")
             let weather = try await weatherService.weather(for: cllocation)
+            debugLog("WK: WeatherService.weather(for:) finished.")
             let weatherState = WeatherState.weather(weather,
                                          timestamp: Date(),
                                          location: Geolocation(latitude: cllocation.coordinate.latitude,
