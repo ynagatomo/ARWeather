@@ -11,7 +11,6 @@ import RealityKit
 
 final class ARViewController: UIViewController {
     private var arView: ARView!
-//    private var cameraTrackingState: ARCamera.TrackingState = .notAvailable
     private var arScene: ARScene!
     private var alertLabel: UILabel!
     private var modelIndex: Int = 0

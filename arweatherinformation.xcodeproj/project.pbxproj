@@ -37,7 +37,6 @@
 		BA882488288CFDB400380797 /* hourflipReset.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA882487288CFDB400380797 /* hourflipReset.m4a */; };
 		BA938B9A287674BA00F26FAE /* HourlyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B99287674BA00F26FAE /* HourlyForecastView.swift */; };
 		BA938B9C287676DD00F26FAE /* DailyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B9B287676DD00F26FAE /* DailyForecastView.swift */; };
-		BA938B9E287677B900F26FAE /* HourlySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA938B9D287677B900F26FAE /* HourlySample.swift */; };
 		BA9CCF3D287E6EA400B92F63 /* hourflip.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BA9CCF3C287E6EA400B92F63 /* hourflip.m4a */; };
 		BA9CCF3F287E747100B92F63 /* scaleup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA9CCF3E287E747100B92F63 /* scaleup.mp3 */; };
 		BAA654B9288A3A79006F02B7 /* Double-extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA654B8288A3A79006F02B7 /* Double-extensions.swift */; };
@@ -102,7 +101,6 @@
 		BA882487288CFDB400380797 /* hourflipReset.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hourflipReset.m4a; sourceTree = "<group>"; };
 		BA938B99287674BA00F26FAE /* HourlyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastView.swift; sourceTree = "<group>"; };
 		BA938B9B287676DD00F26FAE /* DailyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastView.swift; sourceTree = "<group>"; };
-		BA938B9D287677B900F26FAE /* HourlySample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlySample.swift; sourceTree = "<group>"; };
 		BA9CCF3C287E6EA400B92F63 /* hourflip.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hourflip.m4a; sourceTree = "<group>"; };
 		BA9CCF3E287E747100B92F63 /* scaleup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scaleup.mp3; sourceTree = "<group>"; };
 		BAA654B8288A3A79006F02B7 /* Double-extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double-extensions.swift"; sourceTree = "<group>"; };
@@ -302,7 +300,6 @@
 				BA6D1052286ABA99003E5AB0 /* ForecastView.swift */,
 				BA938B99287674BA00F26FAE /* HourlyForecastView.swift */,
 				BA938B9B287676DD00F26FAE /* DailyForecastView.swift */,
-				BA938B9D287677B900F26FAE /* HourlySample.swift */,
 			);
 			path = ForecastViews;
 			sourceTree = "<group>";
@@ -376,7 +373,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					BA0E60A52856D6BD009D6CAF = {
 						CreatedOnToolsVersion = 14.0;
@@ -469,7 +466,6 @@
 				BAF82747287CF9C50067A813 /* ARContainerView.swift in Sources */,
 				BAC4997B287294A3008F80DE /* AddLocationView.swift in Sources */,
 				BA938B9A287674BA00F26FAE /* HourlyForecastView.swift in Sources */,
-				BA938B9E287677B900F26FAE /* HourlySample.swift in Sources */,
 				BAF8274C287CFA8D0067A813 /* ARScene.swift in Sources */,
 				BA1381FE286FDF3B004DE7C7 /* LocationManager.swift in Sources */,
 				BA6D1057286ABE28003E5AB0 /* DevView.swift in Sources */,
@@ -541,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -601,6 +598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -658,7 +656,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = arweatherinformation/arweatherinformation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"arweatherinformation/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
 				ENABLE_PREVIEWS = YES;
@@ -675,7 +673,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.atarayosd.arweatherinformation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -694,7 +692,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = arweatherinformation/arweatherinformation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"arweatherinformation/Preview Content\"";
 				DEVELOPMENT_TEAM = J5CY9Q9UP5;
 				ENABLE_PREVIEWS = YES;
@@ -711,7 +709,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.atarayosd.arweatherinformation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

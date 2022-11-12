@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ARWeatherView: View {
-    //    @ObservedObject var appStateController: AppStateController
     let name: String
     let modelIndex: Int
     let hourlyForecast: [HourForecast]
